@@ -1,1 +1,1 @@
-# sessorium-core
+# Projeto e pratica I
