@@ -6,12 +6,11 @@ create table aluno (
     matricula varchar(15),
     email varchar(50),
     felefone varchar(11),
-    cpf varchar(11),
-    dataNascimento varchar(10),
+    dataNascimento Date,
     pais varchar(50),
-    obs varchar(200),
-    ped varchar(3),
-    descricao varchar(100)
+    obs varchar(600),
+    pcd boolean,
+    descricao varchar(200)
 );
 
 create table pais (
@@ -19,49 +18,49 @@ create table pais (
     email varchar(50),
     felefone varchar(11),
     cpf varchar(11),
-    dataNascimento varchar(10)
+    dataNascimento Date
 );
 
 create table professor (
-    aluno varchar(50),
+    nome varchar(50),
     email varchar(50),
     felefone varchar(11),
     cpf varchar(11),
-    dataNascimento varchar(10),
-    formacao varchar(40),
-    curso varchar (40),
-    instituto varchar(50)
+    dataNascimento Date,
+    formacao varchar(100),
+    curso varchar (100),
+    instituto varchar(100)
 );
 
 create table cordenador (
-    aluno varchar(50),
+    nome varchar(50),
     email varchar(50),
     felefone varchar(11),
     cpf varchar(11),
-    dataNascimento varchar(10),
-    formacao varchar(40),
-    curso varchar (40),
-    instituto varchar(50)
+    dataNascimento Date,
+    formacao varchar(100),
+    curso varchar (100),
+    instituto varchar(100)
 );
 
 create table escola (
-    nome varchar(50),
+    nome varchar(100),
     cnpj varchar(25),
-    endereco varchar(50),
+    endereco varchar(100),
     telefone varchar(11),
-    categoria varchar(30),
+    categoria varchar(100),
     codigo int
 );
 
 create table turma (
-    nome varchar(40),
+    nome varchar(100),
     ano int,
-    turno varchar(20)
+    turno varchar(50)
 );
 
 create table materias (
-    nome varchar(50),
+    nome varchar(100),
     professor varchar(50),
-    conteudo varchar(50),
+    conteudo varchar(600),
     cargaHoraria int
 );

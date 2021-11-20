@@ -8,6 +8,7 @@ public class Pessoa {
 	private String telefone;
 	private String cpf;
 	private Date dataNascimento;
+	private String mensagem;
 	
 	public String getNome() {
 		return nome;
@@ -38,6 +39,12 @@ public class Pessoa {
 	}
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	public String getMensagem() {
+		return mensagem;
+	}
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 	
 	
