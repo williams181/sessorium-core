@@ -1,8 +1,9 @@
-package br.ifpe.com;
+package br.ifpe.com.Model;
 
 import java.util.Date;
 
 public class Pessoa {
+	
 	private String nome;
 	private String email;
 	private String telefone;

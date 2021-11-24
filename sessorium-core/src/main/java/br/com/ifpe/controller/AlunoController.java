@@ -1,21 +1,36 @@
 package br.com.ifpe.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.ifpe.com.Aluno;
+import br.ifpe.com.Model.Aluno;
+import br.ifpe.com.Service.AlunoService;
 
-@Controller
-public class AlunoController {
 
-	@GetMapping
-	public String exibirFomrCadastroAluno(){
-		return "";
+	@Controller
+	public class AlunoController {
+	
+		@Autowired
+		private AlunoService alunoService;
 		
-	}
-	@PostMapping
-	public String cadastrarAluno(Aluno aluno) {
-		return "";
-	}
+		private List<Aluno> alunos = new ArrayList<>();
+	
+		@GetMapping("/exibirAluno")
+		public String exibirForm(Aluno aluno) {
+			return "alunos-form";
+		}
+		
+		@PostMapping("/salvarAluno")
+		public String salvarAluno(Aluno aluno) {
+			this.alunos.remove(aluno);
+			this.alunos.add(aluno);
+			this.alunoService.inserirAluno(aluno);
+			System.out.println(aluno);
+			return "redirect:/listarAlunos";
+		}
 }
