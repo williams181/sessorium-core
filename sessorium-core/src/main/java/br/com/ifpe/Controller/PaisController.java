@@ -1,21 +1,21 @@
-package br.com.ifpe.controller;
+package br.com.ifpe.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.ifpe.com.Model.Turma;
+import br.ifpe.com.Model.Pais;
 
 @Controller
-public class TurmaController {
+public class PaisController {
 
 	@GetMapping
-	public String exibirFomrCadastroTurma(){
+	public String exibirFomrCadastroPais(){
 		return "";
 		
 	}
 	@PostMapping
-	public String cadastrarTurma(Turma turma) {
+	public String cadastrarPais(Pais pais) {
 		return "";
 	}
 }

@@ -1,21 +1,22 @@
-package br.com.ifpe.controller;
+package br.com.ifpe.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.ifpe.com.Model.Escola;
+import br.ifpe.com.Model.Materias;
 
 @Controller
-public class EscolaController {
-
+public class MateriasController {
+	
 	@GetMapping
-	public String exibirFomrCadastroEscola(){
+	public String exibirFomrCadastroMaterias(){
 		return "";
 		
 	}
 	@PostMapping
-	public String cadastrarEscola(Escola escola) {
+	public String cadastrarMaterias(Materias materias) {
 		return "";
 	}
+
 }
