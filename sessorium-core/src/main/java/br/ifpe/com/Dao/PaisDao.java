@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import br.ifpe.com.Model.Pais;
 
-	@Repository
-	public interface PaisDao extends JpaRepository <Pais, String> {
+@Repository
+public interface PaisDao extends JpaRepository<Pais, String> {
 
-		
 }

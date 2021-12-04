@@ -9,10 +9,16 @@ import br.ifpe.com.Model.Administrador;
 @Service
 public class AdministradorService {
 
-	@Autowired 
+	@Autowired
 	private AdministradorDao daoAdministrador;
-	
+
 	public void inserirAdministrador(Administrador administrador) {
 		this.daoAdministrador.save(administrador);
 	}
+	
+	public void removerAdministrador(Administrador administrador) {
+		this.daoAdministrador.delete(administrador);
+	}
+	
+	
 }

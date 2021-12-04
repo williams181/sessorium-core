@@ -4,48 +4,58 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Pessoa {
-	
+
 	private String nome;
 	private String email;
 	private String telefone;
 	private String cpf;
 	private Date dataNascimento;
-	
 
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getTelefone() {
 		return telefone;
 	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
+
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf, dataNascimento, email, nome, telefone);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -59,11 +69,13 @@ public class Pessoa {
 				&& Objects.equals(email, other.email) && Objects.equals(nome, other.nome)
 				&& Objects.equals(telefone, other.telefone);
 	}
+
 	@Override
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
 				+ ", dataNascimento=" + dataNascimento + "]";
 	}
+
 	public Pessoa(String nome, String email, String telefone, String cpf, Date dataNascimento) {
 		super();
 		this.nome = nome;
@@ -72,14 +84,10 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
+
 	public Pessoa() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	
-	
-
 
 }

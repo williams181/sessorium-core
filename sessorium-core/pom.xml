@@ -59,7 +59,8 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<!-- novas dependencias adicionadas apartir daqui, cado apresentarem erro, as remova! -->
+		<!-- novas dependencias adicionadas apartir daqui, cado apresentarem erro, 
+			as remova! -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -68,9 +69,8 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.14</version>
+			<scope>runtime</scope>
 		</dependency>
-
 
 	</dependencies>
 

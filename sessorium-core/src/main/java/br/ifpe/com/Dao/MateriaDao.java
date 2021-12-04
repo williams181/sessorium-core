@@ -3,11 +3,9 @@ package br.ifpe.com.Dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.ifpe.com.Model.Materias;
+import br.ifpe.com.Model.Materia;
 
-	@Repository
-	public interface MateriasDao extends JpaRepository <Materias, String> {
-	
-		
+@Repository
+public interface MateriaDao extends JpaRepository<Materia, String> {
 
 }

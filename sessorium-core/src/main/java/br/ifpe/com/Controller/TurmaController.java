@@ -1,21 +1,36 @@
 package br.ifpe.com.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.ifpe.com.Model.Turma;
+import br.ifpe.com.Service.TurmaService;
 
 @Controller
 public class TurmaController {
 
+	@Autowired
+	private TurmaService turmaService;
+	
+	private List<Turma> turmas = new ArrayList<>();
+	
 	@GetMapping
-	public String exibirFomrCadastroTurma(){
-		return "";
-		
+	public String exibirForm(Turma turma) {
+		return "turma-form";
 	}
-	@PostMapping
-	public String cadastrarTurma(Turma turma) {
-		return "";
+	
+	@PostMapping("/salvarTurma")
+	public String salvarTurma(Turma turma) {
+		this.turmas.remove(turma);
+		this.turmas.add(turma);
+		this.turmaService.insesirTurma(turma);
+		System.out.println(turma);
+		return "redirect:/listarTurmas";
 	}
+	
 }

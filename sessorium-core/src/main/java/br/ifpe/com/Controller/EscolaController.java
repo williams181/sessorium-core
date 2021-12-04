@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import br.ifpe.com.Model.Escola;
 import br.ifpe.com.Service.EscolaService;
 
-	@Controller
-	public class EscolaController {
-		
-		@Autowired
-		private EscolaService escolaService;
-		
-		private List<Escola> escolas = new ArrayList<>();
+@Controller
+public class EscolaController {
 
-		@GetMapping("/exibirEscola")
-		public String exibirForm(Escola escola){
-			return "escolas-form";
-			
-		}
-		
-		@PostMapping("/salvarEscola")
-		public String salvarEscola(Escola escola) {
-			this.escolas.remove(escola);
-			this.escolas.add(escola);
-			this.escolaService.inserirEscola(escola);
-			System.out.println(escola);
-			return "redirect:/listarEscola";
-		}
+	@Autowired
+	private EscolaService escolaService;
+
+	private List<Escola> escolas = new ArrayList<>();
+
+	@GetMapping("/exibirEscola")
+	public String exibirForm(Escola escola) {
+		return "escola-form";
+
+	}
+
+	@PostMapping("/salvarEscola")
+	public String salvarEscola(Escola escola) {
+		this.escolas.remove(escola);
+		this.escolas.add(escola);
+		this.escolaService.inserirEscola(escola);
+		System.out.println(escola);
+		return "redirect:/listarEscola";
+	}
 }

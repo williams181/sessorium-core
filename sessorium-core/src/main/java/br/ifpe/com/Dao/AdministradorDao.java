@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import br.ifpe.com.Model.Administrador;
 
-	@Repository
-	public interface AdministradorDao extends JpaRepository <Administrador, String> {
-
+@Repository
+public interface AdministradorDao extends JpaRepository<Administrador, String> {
 
 }
