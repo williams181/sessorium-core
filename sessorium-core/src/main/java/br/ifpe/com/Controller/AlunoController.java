@@ -1,4 +1,4 @@
-package br.com.ifpe.Controller;
+package br.ifpe.com.Controller;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -18,6 +18,7 @@ public class Pais extends Pessoa {
 	private String cpf;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dataNascimento;
+	
 	public String getNome() {
 		return nome;
 	}

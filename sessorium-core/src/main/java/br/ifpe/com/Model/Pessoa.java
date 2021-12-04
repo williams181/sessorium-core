@@ -1,6 +1,7 @@
 package br.ifpe.com.Model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Pessoa {
 	
@@ -9,8 +10,8 @@ public class Pessoa {
 	private String telefone;
 	private String cpf;
 	private Date dataNascimento;
-	private String mensagem;
 	
+
 	public String getNome() {
 		return nome;
 	}
@@ -41,13 +42,44 @@ public class Pessoa {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getMensagem() {
-		return mensagem;
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf, dataNascimento, email, nome, telefone);
 	}
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		return Objects.equals(cpf, other.cpf) && Objects.equals(dataNascimento, other.dataNascimento)
+				&& Objects.equals(email, other.email) && Objects.equals(nome, other.nome)
+				&& Objects.equals(telefone, other.telefone);
 	}
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
+				+ ", dataNascimento=" + dataNascimento + "]";
+	}
+	public Pessoa(String nome, String email, String telefone, String cpf, Date dataNascimento) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+	}
+	public Pessoa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
+	
+
 
 }
