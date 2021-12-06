@@ -1,6 +1,6 @@
 package br.ifpe.com.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Pessoa {
@@ -9,7 +9,8 @@ public class Pessoa {
 	private String email;
 	private String telefone;
 	private String cpf;
-	private Date dataNascimento;
+	
+	private LocalDate dataNascimento;
 
 	public String getNome() {
 		return nome;
@@ -43,11 +44,13 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Date getDataNascimento() {
+
+
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -76,7 +79,7 @@ public class Pessoa {
 				+ ", dataNascimento=" + dataNascimento + "]";
 	}
 
-	public Pessoa(String nome, String email, String telefone, String cpf, Date dataNascimento) {
+	public Pessoa(String nome, String email, String telefone, String cpf, LocalDate dataNascimento) {
 		super();
 		this.nome = nome;
 		this.email = email;

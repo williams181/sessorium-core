@@ -1,6 +1,6 @@
 package br.ifpe.com.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Administrador extends Pessoa {
 	private String telefone;
 	private String cpf;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 
 	public String getNome() {
 		return nome;
@@ -51,11 +51,11 @@ public class Administrador extends Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -87,8 +87,8 @@ public class Administrador extends Pessoa {
 				+ ", dataNascimento=" + dataNascimento + "]";
 	}
 
-	public Administrador(String nome, String email, String telefone, String cpf, Date dataNascimento, String nome2,
-			String email2, String telefone2, String cpf2, Date dataNascimento2) {
+	public Administrador(String nome, String email, String telefone, String cpf, LocalDate dataNascimento, String nome2,
+			String email2, String telefone2, String cpf2, LocalDate dataNascimento2) {
 		super(nome, email, telefone, cpf, dataNascimento);
 		nome = nome2;
 		email = email2;
@@ -102,7 +102,7 @@ public class Administrador extends Pessoa {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Administrador(String nome, String email, String telefone, String cpf, Date dataNascimento) {
+	public Administrador(String nome, String email, String telefone, String cpf, LocalDate dataNascimento) {
 		super(nome, email, telefone, cpf, dataNascimento);
 		// TODO Auto-generated constructor stub
 	}

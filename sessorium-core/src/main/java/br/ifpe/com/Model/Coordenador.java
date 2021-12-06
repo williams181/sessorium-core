@@ -1,6 +1,6 @@
 package br.ifpe.com.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -17,34 +17,10 @@ public class Coordenador extends Pessoa {
 	private String telefone;
 	private String cpf;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private String formacao;
 	private String curso;
 	private String instituto;
-
-	public String getFormacao() {
-		return formacao;
-	}
-
-	public void setFormacao(String formacao) {
-		this.formacao = formacao;
-	}
-
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
-	public String getInstituto() {
-		return instituto;
-	}
-
-	public void setInstituto(String instituto) {
-		this.instituto = instituto;
-	}
 
 	public String getNome() {
 		return nome;
@@ -78,24 +54,51 @@ public class Coordenador extends Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public String getFormacao() {
+		return formacao;
+	}
+
+	public void setFormacao(String formacao) {
+		this.formacao = formacao;
+	}
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getInstituto() {
+		return instituto;
+	}
+
+	public void setInstituto(String instituto) {
+		this.instituto = instituto;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, curso, dataNascimento, email, formacao, instituto, nome, telefone);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(cpf, curso, dataNascimento, email, formacao, instituto, nome, telefone);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -113,14 +116,15 @@ public class Coordenador extends Pessoa {
 				+ instituto + "]";
 	}
 
-	public Coordenador(String nome, String email, String telefone, String cpf, Date dataNascimento, String formacao,
-			String curso, String instituto) {
-		super();
-		this.nome = nome;
-		this.email = email;
-		this.telefone = telefone;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
+	public Coordenador(String nome, String email, String telefone, String cpf, LocalDate dataNascimento, String nome2,
+			String email2, String telefone2, String cpf2, LocalDate dataNascimento2, String formacao, String curso,
+			String instituto) {
+		super(nome, email, telefone, cpf, dataNascimento);
+		nome = nome2;
+		email = email2;
+		telefone = telefone2;
+		cpf = cpf2;
+		dataNascimento = dataNascimento2;
 		this.formacao = formacao;
 		this.curso = curso;
 		this.instituto = instituto;
@@ -128,6 +132,11 @@ public class Coordenador extends Pessoa {
 
 	public Coordenador() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Coordenador(String nome, String email, String telefone, String cpf, LocalDate dataNascimento) {
+		super(nome, email, telefone, cpf, dataNascimento);
 		// TODO Auto-generated constructor stub
 	}
 
