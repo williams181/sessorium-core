@@ -1,16 +1,38 @@
 package br.ifpe.com.Model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@MappedSuperclass
 public class Pessoa {
 
+	@Id
+	@NotNull
 	private String nome;
+
+	@NotNull
 	private String email;
+
+	@NotNull
 	private String telefone;
+
+	@NotNull
 	private String cpf;
-	
+
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
+
+	@NotNull
+	private Endereco endereco;
+	
+	@NotNull
+	private byte[] foto;
 
 	public String getNome() {
 		return nome;
@@ -44,8 +66,6 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-
-
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
@@ -54,43 +74,20 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(cpf, dataNascimento, email, nome, telefone);
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(dataNascimento, other.dataNascimento)
-				&& Objects.equals(email, other.email) && Objects.equals(nome, other.nome)
-				&& Objects.equals(telefone, other.telefone);
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
-	@Override
-	public String toString() {
-		return "Pessoa [nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
-				+ ", dataNascimento=" + dataNascimento + "]";
+	public byte[] getFoto() {
+		return foto;
 	}
 
-	public Pessoa(String nome, String email, String telefone, String cpf, LocalDate dataNascimento) {
-		super();
-		this.nome = nome;
-		this.email = email;
-		this.telefone = telefone;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-	}
-
-	public Pessoa() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 }
