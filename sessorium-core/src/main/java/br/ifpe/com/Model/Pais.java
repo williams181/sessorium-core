@@ -1,8 +1,8 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Pais extends Pessoa {
 
 }

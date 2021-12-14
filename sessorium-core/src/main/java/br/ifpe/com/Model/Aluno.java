@@ -22,6 +22,9 @@ public class Aluno extends Pessoa {
 	
 	@NotNull
 	private List<Materia> materias;
+	
+	@NotNull
+	private Pais pais;
 
 	public String getObs() {
 		return obs;
@@ -53,6 +56,22 @@ public class Aluno extends Pessoa {
 
 	public void setMaterias(List<Materia> materias) {
 		this.materias = materias;
+	}
+
+	public CategoriaPcd getCategoriaPcd() {
+		return categoriaPcd;
+	}
+
+	public void setCategoriaPcd(CategoriaPcd categoriaPcd) {
+		this.categoriaPcd = categoriaPcd;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 	
 }
