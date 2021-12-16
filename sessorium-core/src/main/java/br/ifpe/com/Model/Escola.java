@@ -1,34 +1,54 @@
 package br.ifpe.com.Model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Escola {
 
 	@Id
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int codigo;
 	
-	@NotNull
 	private String nome;
 	
-	@NotNull
 	private String cnpj;
 	
-	@NotNull
 	private Endereco endereco;
 	
-	@NotNull
 	private String telefone;
 	
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private CategoriaEscola categoriaEscola;
 	
+	private List<Professor> Professores;
+	
+	private List<Turma> turmas;
+	
+	private Coordenador coordenador;
+	
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
+	public Coordenador getCoordenador() {
+		return coordenador;
+	}
+
+	public void setCoordenador(Coordenador coordenador) {
+		this.coordenador = coordenador;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -77,4 +97,12 @@ public class Escola {
 		this.codigo = codigo;
 	}
 
+	public List<Professor> getProfessores() {
+		return Professores;
+	}
+
+	public void setProfessores(List<Professor> professores) {
+		Professores = professores;
+	}
+	
 }

@@ -2,36 +2,26 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @MappedSuperclass
 public class Pessoa {
 
-	@Id
-	@NotNull
 	private String nome;
 
-	@NotNull
 	private String email;
 
-	@NotNull
 	private String telefone;
 
-	@NotNull
 	private String cpf;
 
-	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
 
-	@NotNull
 	private Endereco endereco;
 	
-	@NotNull
 	private byte[] foto;
 
 	public String getNome() {

@@ -3,19 +3,22 @@ package br.ifpe.com.Model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Coordenador extends Pessoa {
 
-	@NotNull
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int codigo;
+
 	@Enumerated(EnumType.STRING)
 	private Formacao formacao;
-	
-	@NotNull
+
 	private Curso curso;
-	
-	@NotNull
+
 	private Instituicao instituto;
 
 	public Formacao getFormacao() {
@@ -40,6 +43,14 @@ public class Coordenador extends Pessoa {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 }

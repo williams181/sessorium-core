@@ -1,15 +1,12 @@
 package br.ifpe.com.Model;
 
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 @Embeddable
 public class Instituicao {
 
-	@NotNull
 	private String nome;
 	
-	@NotNull
 	private Endereco endereco;
 
 	public String getNome() {

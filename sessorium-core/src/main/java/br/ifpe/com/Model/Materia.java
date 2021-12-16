@@ -1,19 +1,24 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Materia {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int codigo;
 
-	@NotNull
 	private String nome;
 	
-	@NotNull
 	private String conteudo;
 	
-	@NotNull
 	private int cargaHoraria;
+	
+	private Professor professor;
 
 	public String getNome() {
 		return nome;
@@ -39,4 +44,20 @@ public class Materia {
 		this.cargaHoraria = cargaHoraria;
 	}
 
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
 }

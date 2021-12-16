@@ -1,27 +1,53 @@
 package br.ifpe.com.Model;
 
 import java.time.LocalDate;
-
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Turma {
 
 	@Id
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int codigo;
+
 	private String nome;
-	
-	@NotNull
+
 	private LocalDate ano;
-	
-	@NotNull
+
+	private int totalMeses;
+
+	@Enumerated(EnumType.STRING)
+	private Semestre semestre;
+
 	@Enumerated(EnumType.STRING)
 	private Turno turno;
+
+	private List<Aluno> alunos;
+
+	private List<Materia> materias;
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
 
 	public String getNome() {
 		return nome;
@@ -46,5 +72,29 @@ public class Turma {
 	public void setTurno(Turno turno) {
 		this.turno = turno;
 	}
-	
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public int getTotalMeses() {
+		return totalMeses;
+	}
+
+	public void setTotalMeses(int totalMeses) {
+		this.totalMeses = totalMeses;
+	}
+
+	public Semestre getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
+
 }

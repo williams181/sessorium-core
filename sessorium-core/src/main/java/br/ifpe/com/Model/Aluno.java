@@ -1,29 +1,28 @@
 package br.ifpe.com.Model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Aluno extends Pessoa {
 	
-	@NotNull
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int codigo;
+
 	private String obs;
-	
-	@NotNull
+
 	private boolean pcd;
-	
-	@NotNull
+
+	@Enumerated(EnumType.STRING)
 	private CategoriaPcd categoriaPcd;
-	
-	@NotNull
+
 	private String descricao;
-	
-	@NotNull
-	private List<Materia> materias;
-	
-	@NotNull
+
 	private Pais pais;
 
 	public String getObs() {
@@ -50,14 +49,6 @@ public class Aluno extends Pessoa {
 		this.descricao = descricao;
 	}
 
-	public List<Materia> getMaterias() {
-		return materias;
-	}
-
-	public void setMaterias(List<Materia> materias) {
-		this.materias = materias;
-	}
-
 	public CategoriaPcd getCategoriaPcd() {
 		return categoriaPcd;
 	}
@@ -72,6 +63,14 @@ public class Aluno extends Pessoa {
 
 	public void setPais(Pais pais) {
 		this.pais = pais;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	
 }
