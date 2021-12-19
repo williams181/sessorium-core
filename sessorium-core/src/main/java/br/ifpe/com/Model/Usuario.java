@@ -1,5 +1,5 @@
 package br.ifpe.com.Model;
 
-public class Usuario {
+public class Usuario extends Pessoa {
 
 }

@@ -9,12 +9,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Turma {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 
 	private String nome;
@@ -29,8 +30,10 @@ public class Turma {
 	@Enumerated(EnumType.STRING)
 	private Turno turno;
 
+	@OneToMany
 	private List<Aluno> alunos;
 
+	@OneToMany
 	private List<Materia> materias;
 
 	public List<Aluno> getAlunos() {

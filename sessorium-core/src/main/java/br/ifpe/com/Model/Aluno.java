@@ -3,16 +3,9 @@ package br.ifpe.com.Model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Aluno extends Pessoa {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigo;
 
 	private String obs;
 
@@ -23,7 +16,9 @@ public class Aluno extends Pessoa {
 
 	private String descricao;
 
-	private Pais pais;
+//	@ManyToMany
+//	@JoinColumn(name = "pais_id")
+//	private Pais pais;
 
 	public String getObs() {
 		return obs;
@@ -57,20 +52,12 @@ public class Aluno extends Pessoa {
 		this.categoriaPcd = categoriaPcd;
 	}
 
-	public Pais getPais() {
-		return pais;
-	}
+//	public Pais getPais() {
+//		return pais;
+//	}
+//
+//	public void setPais(Pais pais) {
+//		this.pais = pais;
+//	}
 
-	public void setPais(Pais pais) {
-		this.pais = pais;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-	
 }

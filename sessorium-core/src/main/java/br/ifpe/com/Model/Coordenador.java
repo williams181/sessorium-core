@@ -3,22 +3,22 @@ package br.ifpe.com.Model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Coordenador extends Pessoa {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigo;
-
 	@Enumerated(EnumType.STRING)
 	private Formacao formacao;
 
+	@OneToOne
+	@JoinColumn(name = "curso_id")
 	private Curso curso;
 
+	@ManyToOne
+	@JoinColumn(name = "instituto_id")
 	private Instituicao instituto;
 
 	public Formacao getFormacao() {
@@ -43,14 +43,6 @@ public class Coordenador extends Pessoa {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
 	}
 
 }

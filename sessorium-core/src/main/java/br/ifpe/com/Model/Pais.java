@@ -1,28 +1,16 @@
 package br.ifpe.com.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Pais extends Pessoa {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigo;
-	
+
 	private double fatura;
-	
+
 	private String observacao;
 
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+//	@ManyToOne
+//	private List<Aluno> alunos;
 
 	public double getFatura() {
 		return fatura;
@@ -39,5 +27,12 @@ public class Pais extends Pessoa {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
+
+//	public List<Aluno> getAlunos() {
+//		return alunos;
+//	}
+//
+//	public void setAlunos(List<Aluno> alunos) {
+//		this.alunos = alunos;
+//	}
 }

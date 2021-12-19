@@ -8,18 +8,21 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Escola {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
 	private String nome;
 	
 	private String cnpj;
 	
+	@OneToOne
 	private Endereco endereco;
 	
 	private String telefone;
@@ -27,10 +30,13 @@ public class Escola {
 	@Enumerated(EnumType.STRING)
 	private CategoriaEscola categoriaEscola;
 	
+	@OneToMany
 	private List<Professor> Professores;
 	
+	@OneToMany
 	private List<Turma> turmas;
 	
+	@OneToOne
 	private Coordenador coordenador;
 	
 	public List<Turma> getTurmas() {

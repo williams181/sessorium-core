@@ -2,12 +2,20 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @MappedSuperclass
 public class Pessoa {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigo;
 
 	private String nome;
 
@@ -20,6 +28,7 @@ public class Pessoa {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
 
+	@OneToOne
 	private Endereco endereco;
 	
 	private byte[] foto;
@@ -80,4 +89,12 @@ public class Pessoa {
 		this.foto = foto;
 	}
 
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
 }

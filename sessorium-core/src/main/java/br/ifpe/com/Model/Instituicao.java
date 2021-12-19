@@ -1,12 +1,23 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
-@Embeddable
+@Entity
 public class Instituicao {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigo;
 
 	private String nome;
 	
+	@OneToOne
+	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 
 	public String getNome() {
@@ -23,6 +34,14 @@ public class Instituicao {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	
 }
