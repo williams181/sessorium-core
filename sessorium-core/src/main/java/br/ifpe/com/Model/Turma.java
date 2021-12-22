@@ -16,7 +16,7 @@ public class Turma {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
+	private Integer codigo;
 
 	private String nome;
 
@@ -76,11 +76,11 @@ public class Turma {
 		this.turno = turno;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

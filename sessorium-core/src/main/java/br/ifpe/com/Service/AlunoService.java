@@ -1,5 +1,7 @@
 package br.ifpe.com.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,17 @@ public class AlunoService {
 	private AlunoDao daoAluno;
 
 	public void inserirAluno(Aluno aluno) {
-		this.daoAluno.save(aluno);
+		daoAluno.save(aluno);
 	}
 	
-	public void removerAluno(Aluno aluno) {
-		this.daoAluno.delete(aluno);
+	public void removerAluno(Integer id) {
+		daoAluno.deleteById(id);
+	}
+	
+	public List<Aluno> listarAlunos(){
+		return daoAluno.findAll();
+	}
+	public Aluno buscarAluno(Integer id) {
+		return daoAluno.findById(id).get();
 	}
 }

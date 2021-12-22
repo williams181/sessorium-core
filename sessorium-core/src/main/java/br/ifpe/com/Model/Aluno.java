@@ -8,6 +8,8 @@ import javax.persistence.Enumerated;
 public class Aluno extends Pessoa {
 
 	private String obs;
+	
+	private String matricula;
 
 	private boolean pcd;
 
@@ -16,9 +18,7 @@ public class Aluno extends Pessoa {
 
 	private String descricao;
 
-//	@ManyToMany
-//	@JoinColumn(name = "pais_id")
-//	private Pais pais;
+	private Pais pais;
 
 	public String getObs() {
 		return obs;
@@ -52,12 +52,20 @@ public class Aluno extends Pessoa {
 		this.categoriaPcd = categoriaPcd;
 	}
 
-//	public Pais getPais() {
-//		return pais;
-//	}
-//
-//	public void setPais(Pais pais) {
-//		this.pais = pais;
-//	}
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 
 }

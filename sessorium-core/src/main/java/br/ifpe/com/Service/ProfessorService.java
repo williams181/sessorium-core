@@ -1,5 +1,7 @@
 package br.ifpe.com.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,17 @@ public class ProfessorService {
 	private ProfessorDao daoProfessor;
 
 	public void inserirProfessor(Professor professor) {
-		this.daoProfessor.save(professor);
+		daoProfessor.save(professor);
 	}
 	
-	public void removerProfessor(Professor professor) {
-		this.daoProfessor.delete(professor);
+	public void removerProfessor(Integer id) {
+		daoProfessor.deleteById(id);
+	}
+	
+	public List<Professor> listarProfessores(){
+		return daoProfessor.findAll();
+	}
+	public Professor buscarProfessor(Integer id) {
+		return daoProfessor.findById(id).get();
 	}
 }

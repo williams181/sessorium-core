@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ifpe.com.Model.Turma;
 
 @Repository
-public interface TurmaDao extends JpaRepository<Turma, String> {
+public interface TurmaDao extends JpaRepository<Turma, Integer> {
 
 }

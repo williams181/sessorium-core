@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ifpe.com.Model.Coordenador;
 
 @Repository
-public interface CoordenadorDao extends JpaRepository<Coordenador, String> {
+public interface CoordenadorDao extends JpaRepository<Coordenador, Integer> {
 
 }

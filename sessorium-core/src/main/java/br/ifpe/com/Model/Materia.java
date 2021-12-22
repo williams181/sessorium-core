@@ -12,7 +12,7 @@ public class Materia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
+	private Integer codigo;
 
 	private String nome;
 	
@@ -56,11 +56,11 @@ public class Materia {
 		this.professor = professor;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 	

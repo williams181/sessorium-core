@@ -1,19 +1,15 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
+
+@Embeddable
 public class Cidade {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
-	
+	@Column(name="cidade")
 	private String nome;
 
 	@Enumerated(EnumType.STRING)
@@ -35,12 +31,5 @@ public class Cidade {
 		this.uf = uf;
 	}
 
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
 
 }

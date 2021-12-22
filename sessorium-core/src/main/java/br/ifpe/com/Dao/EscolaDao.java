@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ifpe.com.Model.Escola;
 
 @Repository
-public interface EscolaDao extends JpaRepository<Escola, String> {
+public interface EscolaDao extends JpaRepository<Escola, Integer> {
 
 }

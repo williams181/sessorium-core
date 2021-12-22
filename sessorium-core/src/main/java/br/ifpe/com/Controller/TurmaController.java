@@ -28,7 +28,7 @@ public class TurmaController {
 	public String salvarTurma(Turma turma) {
 		this.turmas.remove(turma);
 		this.turmas.add(turma);
-		this.turmaService.insesirTurma(turma);
+		this.turmaService.inserirTurma(turma);
 		System.out.println(turma);
 		return "redirect:/listarTurmas";
 	}

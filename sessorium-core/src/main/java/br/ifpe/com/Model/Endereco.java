@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Endereco {
@@ -19,9 +18,9 @@ public class Endereco {
 	private String numero;
 
 	private String bairro;
+	
+	private String complemento;
 
-	@OneToOne
-	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 
 	private String cep;
@@ -72,6 +71,14 @@ public class Endereco {
 
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 }

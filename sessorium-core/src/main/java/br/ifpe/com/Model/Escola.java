@@ -16,7 +16,7 @@ public class Escola {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
+	private Integer codigo;
 	
 	private String nome;
 	
@@ -95,11 +95,11 @@ public class Escola {
 		this.telefone = telefone;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

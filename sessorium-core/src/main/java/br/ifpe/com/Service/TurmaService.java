@@ -1,5 +1,7 @@
 package br.ifpe.com.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +13,20 @@ public class TurmaService {
 	
 	@Autowired
 	private TurmaDao daoTurma;
-	
-	public void insesirTurma(Turma turma) {
-		this.daoTurma.save(turma);
+
+	public void inserirTurma(Turma turma) {
+		daoTurma.save(turma);
 	}
 	
-	public void removerTurma(Turma turma) {
-		this.daoTurma.delete(turma);
+	public void removerTurma(Integer id) {
+		daoTurma.deleteById(id);
+	}
+	
+	public List<Turma> listarTurmas(){
+		return daoTurma.findAll();
+	}
+	public Turma buscarTurma(Integer id) {
+		return daoTurma.findById(id).get();
 	}
 	
 }

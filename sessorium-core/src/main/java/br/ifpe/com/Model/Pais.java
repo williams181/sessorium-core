@@ -1,38 +1,80 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Entity;
+import java.time.LocalDate;
 
-@Entity
-public class Pais extends Pessoa {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-	private double fatura;
+import org.springframework.format.annotation.DateTimeFormat;
 
-	private String observacao;
+@Embeddable
+public class Pais {
 
-//	@ManyToOne
-//	private List<Aluno> alunos;
+	@Column(name = "pai")
+	private String nome;
 
-	public double getFatura() {
-		return fatura;
+	@Column(name = "Email_Pai")
+	private String email;
+
+	@Column(name = "telefone_Pai")
+	private String telefone;
+
+	@Column(name = "cpf_Pai")
+	private String cpf;
+
+	@Column(name = "dataNascimento_Pai")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataNascimento;
+
+	@Column(name = "Foto_Pai")
+	private byte[] foto;
+
+	public String getNome() {
+		return nome;
 	}
 
-	public void setFatura(double fatura) {
-		this.fatura = fatura;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getObservacao() {
-		return observacao;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-//	public List<Aluno> getAlunos() {
-//		return alunos;
-//	}
-//
-//	public void setAlunos(List<Aluno> alunos) {
-//		this.alunos = alunos;
-//	}
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
 }

@@ -1,5 +1,7 @@
 package br.ifpe.com.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +15,18 @@ public class MateriaService {
 	private MateriaDao daoMateria;
 
 	public void inserirMateria(Materia materia) {
-		this.daoMateria.save(materia);
+		daoMateria.save(materia);
 	}
 	
-	public void removerMateria(Materia materia) {
-		this.daoMateria.delete(materia);
+	public void removerMateria(Integer id) {
+		daoMateria.deleteById(id);
+	}
+	
+	public List<Materia> listarMaterias(){
+		return daoMateria.findAll();
+	}
+	public Materia buscarMateria(Integer id) {
+		return daoMateria.findById(id).get();
 	}
 	
 }

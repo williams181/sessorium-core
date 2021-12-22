@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ifpe.com.Model.Aluno;
 
 @Repository
-public interface AlunoDao extends JpaRepository<Aluno, String> {
+public interface AlunoDao extends JpaRepository<Aluno, Integer> {
 
 }

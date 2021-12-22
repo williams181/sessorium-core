@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ifpe.com.Model.Professor;
 
 @Repository
-public interface ProfessorDao extends JpaRepository<Professor, String> {
+public interface ProfessorDao extends JpaRepository<Professor, Integer> {
 
 }
