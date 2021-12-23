@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>formulario aluno</title>
+<title>formulario coordenador</title>
 </head>
 <body>
 
-	<form action="/salvarAluno" method="post">
+	<form action="/salvarCoordenador" method="post">
 
 		<label for="nome">Nome:</label><br> <input type="text" id="nome"
 			name="nome"><br> <label for="email">Email:</label><br>
@@ -22,20 +22,8 @@
 			type="date" id="dataNascimento" name="dataNascimento"><br>
 
 		<label for="foto">foto:</label><br> <input type="file" id="foto"
-			name="foto"><br> <label for="pcd">pcd:</label><br>
+			name="foto"><br><br>
 
-		<input type="radio" id="pcd" name="pcd" value="true"><input
-			type="radio" id="pcd" name="pcd" value="false"><br> <label
-			for="matricula">matricula:</label><br> <input type="text"
-			id="matricula" name="matricula"><br> <label for="rua">rua:</label><br>
-
-		<input type="text" id="rua" name="rua"><br> <label
-			for="numero">numero:</label><br> <input type="text" id="numero"
-			name="numero"><br> <label for="bairro">bairo:</label><br>
-
-		<input type="text" id="bairo" name="bairo"><br> <label
-			for="paiNome">Nome pai:</label><br> <input type="text"
-			id="paiNome" name="paiNome"><br><br>
 		<button type="submit">Salvar</button>
 	</form>
 

@@ -2,7 +2,6 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,71 +9,65 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Embeddable
 public class Pais {
 
-	@Column(name = "pai")
-	private String nome;
+	private String paiNome;
 
-	@Column(name = "Email_Pai")
-	private String email;
+	private String paiEmail;
 
-	@Column(name = "telefone_Pai")
-	private String telefone;
+	private String paiTelefone;
 
-	@Column(name = "cpf_Pai")
-	private String cpf;
+	private String paiCpf;
 
-	@Column(name = "dataNascimento_Pai")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataNascimento;
+	private LocalDate paiDataNascimento;
 
-	@Column(name = "Foto_Pai")
-	private byte[] foto;
+	private byte[] paiFoto;
 
-	public String getNome() {
-		return nome;
+	public String getPaiNome() {
+		return paiNome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPaiNome(String paiNome) {
+		this.paiNome = paiNome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPaiEmail() {
+		return paiEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPaiEmail(String paiEmail) {
+		this.paiEmail = paiEmail;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getPaiTelefone() {
+		return paiTelefone;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setPaiTelefone(String paiTelefone) {
+		this.paiTelefone = paiTelefone;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getPaiCpf() {
+		return paiCpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setPaiCpf(String paiCpf) {
+		this.paiCpf = paiCpf;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
+	public LocalDate getPaiDataNascimento() {
+		return paiDataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setPaiDataNascimento(LocalDate paiDataNascimento) {
+		this.paiDataNascimento = paiDataNascimento;
 	}
 
-	public byte[] getFoto() {
-		return foto;
+	public byte[] getPaiFoto() {
+		return paiFoto;
 	}
 
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
+	public void setPaiFoto(byte[] paiFoto) {
+		this.paiFoto = paiFoto;
 	}
 
 }

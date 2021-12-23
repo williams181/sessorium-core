@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listagem de aluno</title>
+</head>
+<body>
+
+	<div>
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+				<th>E-mail</th>
+			</tr>
+			<tr th:each="cont : ${lista}">
+				<td th:text="${cont.nome}"></td>
+				<td th:text="${cont.telefone}"></td>
+				<td th:text="${cont.email}">
+			</tr>
+		</table>
+		<hr />
+	</div>
+
+</body>
+</html>

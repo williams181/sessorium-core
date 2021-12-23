@@ -20,6 +20,11 @@ public class ProfessorController {
 	private List<Professor> professores = new ArrayList<>();
 
 	@GetMapping("/exibirProfessor")
+	public String exibirPaginaProfessor(Professor professor) {
+		return "pagina-professor";
+	}
+	
+	@GetMapping("/exibirFormProfessor")
 	public String exibirForm(Professor professor) {
 		return "professor-form";
 	}
@@ -30,6 +35,6 @@ public class ProfessorController {
 		this.professores.add(professor);
 		this.professorService.inserirProfessor(professor);
 		System.out.println(professor);
-		return "redirect:/listarProfessores";
+		return "redirect:/exibirProfessor";
 	}
 }

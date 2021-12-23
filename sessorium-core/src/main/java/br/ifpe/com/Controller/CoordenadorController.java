@@ -18,8 +18,18 @@ public class CoordenadorController {
 	private CoordenadorService coordenadorService;
 
 	private List<Coordenador> coordenadores = new ArrayList<>();
+	
+	@GetMapping("/")
+	public String exibirIndex(Coordenador coordenador) {
+		return "index";
+	}
 
 	@GetMapping("/exibirCoordenador")
+	public String exibirPaginaCoordenador(Coordenador coordenador) {
+		return "pagina-coordenador";
+	}
+	
+	@GetMapping("/exibirFormCoordenador")
 	public String exibirForm(Coordenador coordenador) {
 		return "coordenador-form";
 	}
@@ -30,7 +40,7 @@ public class CoordenadorController {
 		this.coordenadores.add(coordenador);
 		this.coordenadorService.inserirCoordenador(coordenador);
 		System.out.println(coordenador);
-		return "redirect:/listarCoordenador";
+		return "redirect:/exibirCoordenador";
 	}
 
 }

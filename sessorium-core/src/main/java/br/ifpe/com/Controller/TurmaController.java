@@ -19,7 +19,12 @@ public class TurmaController {
 	
 	private List<Turma> turmas = new ArrayList<>();
 	
-	@GetMapping
+	@GetMapping("/exibirTurma")
+	public String exibirPaginaTurma(Turma turma) {
+		return "pagina-turma";
+	}
+	
+	@GetMapping("/exibirFormTurma")
 	public String exibirForm(Turma turma) {
 		return "turma-form";
 	}
@@ -30,7 +35,7 @@ public class TurmaController {
 		this.turmas.add(turma);
 		this.turmaService.inserirTurma(turma);
 		System.out.println(turma);
-		return "redirect:/listarTurmas";
+		return "redirect:/exibirTurma";
 	}
 	
 }

@@ -20,9 +20,13 @@ public class EscolaController {
 	private List<Escola> escolas = new ArrayList<>();
 
 	@GetMapping("/exibirEscola")
+	public String exibirPaginaEscola(Escola escola) {
+		return "pagina-escola";
+	}
+	
+	@GetMapping("/exibirFormEscola")
 	public String exibirForm(Escola escola) {
 		return "escola-form";
-
 	}
 
 	@PostMapping("/salvarEscola")
@@ -31,6 +35,6 @@ public class EscolaController {
 		this.escolas.add(escola);
 		this.escolaService.inserirEscola(escola);
 		System.out.println(escola);
-		return "redirect:/listarEscola";
+		return "redirect:/exibirEscola";
 	}
 }

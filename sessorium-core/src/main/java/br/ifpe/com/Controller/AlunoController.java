@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,6 +21,11 @@ public class AlunoController {
 	private List<Aluno> alunos = new ArrayList<>();
 
 	@GetMapping("/exibirAluno")
+	public String exibirPaginaAluno(Aluno aluno) {
+		return "pagina-aluno";
+	}
+	
+	@GetMapping("/exibirFormAluno")
 	public String exibirForm(Aluno aluno) {
 		return "aluno-form";
 	}
@@ -32,4 +38,11 @@ public class AlunoController {
 		System.out.println(aluno);
 		return "redirect:/listarAlunos";
 	}
+	
+	@GetMapping("/listarAlunos")
+	public String listarAlunos(Model model) {
+		model.addAttribute("lista", alunos);
+		return "aluno-list";
+	}
+	
 }

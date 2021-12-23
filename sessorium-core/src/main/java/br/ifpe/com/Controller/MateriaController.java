@@ -20,16 +20,21 @@ public class MateriaController {
 	private List<Materia> materias = new ArrayList<>();
 
 	@GetMapping("/exibirMateria")
+	public String exibirPaginaMateria(Materia materia) {
+		return "pagina-materia";
+	}
+	
+	@GetMapping("/exibirFormMateria")
 	public String exibirForm(Materia materia) {
 		return "materia-form";
 	}
 
-	@PostMapping("/salvarMaterias")
-	public String salvarMaterias(Materia materia) {
+	@PostMapping("/salvarMateria")
+	public String salvarMateria(Materia materia) {
 		this.materias.remove(materia);
 		this.materias.add(materia);
 		this.materiaService.inserirMateria(materia);
 		System.out.println(materia);
-		return "redirect:/listarMaterias";
+		return "redirect:/exibirMateria";
 	}
 }
