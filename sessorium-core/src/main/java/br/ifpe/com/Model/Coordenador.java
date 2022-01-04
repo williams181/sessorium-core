@@ -11,7 +11,6 @@ public class Coordenador extends Pessoa {
 	@Enumerated(EnumType.STRING)
 	private Formacao formacao;
 
-
 	private Curso curso;
 
 	private String instituto;

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>formulario alterar escola</title>
+</head>
+<body>
+
+	<form action="/salvarEscola" method="post" th:object="${escola}">
+
+		<label for="nome">Nome:</label><br> <input type="text" id="nome"
+			name="nome" th:field="*{nome}"><br> <label for="email">Email:</label><br>
+
+		<input type="text" id="email" name="email" th:field="*{email}"><br> <label
+			for="telefone">felefone:</label><br> <input type="text"
+			id="telefone" name="telefone" th:field="*{felefone}"><br> <label for="cpf">cnpj:</label><br>
+
+		<input type="text" id="cpnj" name="cnpj" th:field="*{cnpj}"><br>
+		<br>
+
+		<button type="submit">alterar</button>
+	</form>
+
+</body>
+</html>

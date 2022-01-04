@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,9 +25,25 @@ public class EscolaController {
 		return "pagina-escola";
 	}
 	
+
+	@GetMapping("/exibirAlterarEscola")
+	public String exibirAlterarEscola(Escola escola,Integer codigo, Model model) {
+		Escola cont = this.escolaService.buscarEscola(codigo);
+		model.addAttribute("aluno", cont);
+//		this.escolaService.removerEscola(escola);
+		this.escolaService.inserirEscola(escola);
+		return "escola-alterar";
+	}
+	
 	@GetMapping("/exibirFormEscola")
 	public String exibirForm(Escola escola) {
 		return "escola-form";
+	}
+	
+	@GetMapping("/excluirEscola")
+	public String excluirEscola(Integer codigo) {
+		this.escolaService.removerEscola(codigo);
+		return "redirect:/listarEscolas";
 	}
 
 	@PostMapping("/salvarEscola")
@@ -35,6 +52,12 @@ public class EscolaController {
 		this.escolas.add(escola);
 		this.escolaService.inserirEscola(escola);
 		System.out.println(escola);
-		return "redirect:/exibirEscola";
+		return "redirect:/listarEscolas";
+	}
+	
+	@GetMapping("/listarEscolas")
+	public String listarEscolas(Model model) {
+		model.addAttribute("listarEscola", escolas);
+		return "escola-list";
 	}
 }

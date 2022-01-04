@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>formulario salvar turma</title>
+<title>formulario alterar turma</title>
 </head>
 <body>
 
-	<form action="/salvarTurma" method="post">
+	<form action="/salvarTurma" method="post" th:object="${turma}">
 
 		<label for="nome">Nome:</label><br> <input type="text" id="nome"
-			name="nome"><br> <label for="ano">ano:</label><br>
+			name="nome" th:field="*{nome}"><br> <label for="ano">ano:</label><br>
 
-		<input type="date" id="ano" name="ano"> <br>
+		<input type="date" id="ano" name="ano" th:field="*{ano}"> <br>
 		<br>
 
-		<button type="submit">Salvar</button>
+		<button type="submit">alterar</button>
 	</form>
 
 </body>

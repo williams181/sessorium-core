@@ -18,14 +18,16 @@ public class AlunoService {
 		daoAluno.save(aluno);
 	}
 	
-	public void removerAluno(Integer id) {
-		daoAluno.deleteById(id);
+	public void removerAluno(Integer codigo) {
+		daoAluno.deleteById(codigo);
 	}
 	
 	public List<Aluno> listarAlunos(){
 		return daoAluno.findAll();
 	}
-	public Aluno buscarAluno(Integer id) {
-		return daoAluno.findById(id).get();
+	
+	public Aluno buscarAluno(Integer codigo) {
+		return daoAluno.findById(codigo).get();
 	}
+
 }

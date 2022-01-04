@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>formulario alterar professor</title>
+</head>
+<body>
+
+	<form action="/salvarProfessor" method="post" th:object="${professor}">
+
+		<label for="nome">Nome:</label><br> <input type="text" id="nome"
+			name="nome" th:field="*{nome}"><br> <label for="email">Email:</label><br>
+
+		<input type="text" id="email" name="email" th:field="*{email}"><br> <label
+			for="telefone">felefone:</label><br> <input type="text"
+			id="telefone" name="telefone" th:field="*{telefone}"><br> <label for="cpf">cpf:</label><br>
+
+		<input type="text" id="cpf" name="cpf" th:field="*{cpf}"><br> <label
+			for="dataNascimento">data de nascimento:</label><br> <input
+			type="date" id="dataNascimento" name="dataNascimento" th:field="*{dataNascimento}"><br>
+
+		<label for="foto">foto:</label><br> <input type="file" id="foto"
+			name="foto" th:field="*{foto}"><br> <label for="formacao">formação:</label><br>
+		<SELECT name="formacao" th:field="*{formacao}">
+			<option th:each="sit : ${enum_formacao}" th:value="${sit}"
+				th:text="${sit}">
+		</SELECT><br> <label for="instituicao">instituição:</label><br> <input
+			type="text" id="instituicao" name="instituicao" th:field="*{instituicao}"><br> <br>
+
+		<button type="submit">alterar</button>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listagem de materias</title>
+</head>
+<body>
+
+	<div>
+		<table>
+			<tr>
+				<th>codigo</th>
+				<th>nome</th>
+				<th>conteudo</th>
+				<th>ações</th>
+			</tr>
+			<tr th:each="cont : ${listaMateria}">
+				<td th:text="${cont.codigo}"></td>
+				<td th:text="${cont.nome}"></td>
+				<td th:text="${cont.conteudo}">
+				<td><a th:href="|exibirAlterarMateria?codigo=${cont.codigo}|">alterar</a></td>
+				<td><a th:href="|excluirMateria?codigo=${cont.codigo}|">excluir</a></td>
+			</tr>
+		</table>
+		<hr />
+	</div>
+
+</body>
+</html>
