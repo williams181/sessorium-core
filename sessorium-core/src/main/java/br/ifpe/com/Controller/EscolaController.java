@@ -30,7 +30,9 @@ public class EscolaController {
 	public String exibirAlterarEscola(Escola escola,Integer codigo, Model model) {
 		Escola cont = this.escolaService.buscarEscola(codigo);
 		model.addAttribute("aluno", cont);
-//		this.escolaService.removerEscola(escola);
+		this.escolas.remove(escola);
+		this.escolas.add(escola);
+		this.escolaService.removerEscola(codigo);
 		this.escolaService.inserirEscola(escola);
 		return "escola-alterar";
 	}
@@ -41,9 +43,10 @@ public class EscolaController {
 	}
 	
 	@GetMapping("/excluirEscola")
-	public String excluirEscola(Integer codigo) {
+	public String excluirEscola(Escola escola, Integer codigo) {
+		this.escolas.remove(escola);
 		this.escolaService.removerEscola(codigo);
-		return "redirect:/listarEscolas";
+		return "escola-list";
 	}
 
 	@PostMapping("/salvarEscola")

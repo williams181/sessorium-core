@@ -24,25 +24,28 @@ public class MateriaController {
 	public String exibirPaginaMateria(Materia materia) {
 		return "pagina-materia";
 	}
-	
+
 	@GetMapping("/exibirAlterarMateria")
-	public String exibirAlterarMateria(Materia materia,Integer codigo, Model model) {
+	public String exibirAlterarMateria(Materia materia, Integer codigo, Model model) {
 		Materia cont = this.materiaService.buscarMateria(codigo);
 		model.addAttribute("materia", cont);
+		this.materias.remove(materia);
+		this.materias.add(materia);
 		this.materiaService.removerMateria(codigo);
 		this.materiaService.inserirMateria(materia);
 		return "materia-alterar";
 	}
-	
+
 	@GetMapping("/exibirFormMateria")
 	public String exibirForm(Materia materia) {
 		return "materia-form";
 	}
-	
+
 	@GetMapping("/excluirMateria")
-	public String excluirMateria(Integer codigo) {
+	public String excluirMateria(Materia materia, Integer codigo) {
+		this.materias.remove(materia);
 		this.materiaService.removerMateria(codigo);
-		return "redirect:/listarMaterias";
+		return "materia-list";
 	}
 
 	@PostMapping("/salvarMateria")
@@ -53,7 +56,7 @@ public class MateriaController {
 		System.out.println(materia);
 		return "redirect:/listarMaterias";
 	}
-	
+
 	@GetMapping("/listarMaterias")
 	public String listarMaterias(Model model) {
 		model.addAttribute("listarMateria", materias);

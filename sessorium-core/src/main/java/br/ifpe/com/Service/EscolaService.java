@@ -17,15 +17,16 @@ public class EscolaService {
 	public void inserirEscola(Escola escola) {
 		daoEscola.save(escola);
 	}
-	
-	public void removerEscola(Integer id) {
-		daoEscola.deleteById(id);
+
+	public void removerEscola(Integer codigo) {
+		daoEscola.deleteById(codigo);
 	}
-	
-	public List<Escola> listarEscolas(){
+
+	public List<Escola> listarEscolas() {
 		return daoEscola.findAll();
 	}
-	public Escola buscarEscola(Integer id) {
-		return daoEscola.findById(id).get();
+
+	public Escola buscarEscola(Integer codigo) {
+		return daoEscola.findById(codigo).get();
 	}
 }

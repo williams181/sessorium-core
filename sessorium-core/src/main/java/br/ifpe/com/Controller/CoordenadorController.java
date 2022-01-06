@@ -41,7 +41,9 @@ public class CoordenadorController {
 	public String exibirAlterarCoordenador(Coordenador coordenador,Integer codigo, Model model) {
 		Coordenador cont = this.coordenadorService.buscarCoordenador(codigo);
 		model.addAttribute("coordenador", cont);
-//		this.coordenadorService.removerCoordenador(coordenador);
+		this.coordenadores.remove(coordenador);
+		this.coordenadores.add(coordenador)
+;		this.coordenadorService.removerCoordenador(codigo);
 		this.coordenadorService.inserirCoordenador(coordenador);
 		return "coordenador-alterar";
 	}
@@ -52,9 +54,10 @@ public class CoordenadorController {
 	}
 	
 	@GetMapping("/excluirCoordenador")
-	public String excluirCoordenador(Integer codigo) {
+	public String excluirCoordenador(Coordenador coordenador, Integer codigo) {
+		this.coordenadores.remove(coordenador);
 		this.coordenadorService.removerCoordenador(codigo);
-		return "redirect:/listarCoordenadores";
+		return "coordenador-list";
 	}
 
 	@PostMapping("/salvarCoordenador")

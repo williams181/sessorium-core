@@ -4,9 +4,19 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listagem de escolas</title>
+<title>Listagem de Escolas</title>
 </head>
 <body>
+
+	<h4>Listagem de Escolas</h4>
+
+	<br>
+	<a href="/">Voltar Para o Index</a>
+	<br>
+	<a href="/exibirEscola">Pagina da Escola</a>
+	<br>
+	<a href="/exibirFormEscola">Formulario da Escola</a>
+	<br>
 
 	<div>
 		<table>
@@ -18,7 +28,7 @@
 				<th>cnpj</th>
 				<th>ações</th>
 			</tr>
-			<tr th:each="cont : ${listaAluno}">
+			<tr th:each="cont : ${listarAluno}">
 				<td th:text="${cont.codigo}"></td>
 				<td th:text="${cont.nome}"></td>
 				<td th:text="${cont.email}">
@@ -30,6 +40,8 @@
 		</table>
 		<hr />
 	</div>
+
+	<br>
 
 </body>
 </html>

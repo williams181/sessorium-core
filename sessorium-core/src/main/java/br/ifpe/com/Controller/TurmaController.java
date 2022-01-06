@@ -17,34 +17,37 @@ public class TurmaController {
 
 	@Autowired
 	private TurmaService turmaService;
-	
+
 	private List<Turma> turmas = new ArrayList<>();
-	
+
 	@GetMapping("/exibirTurma")
 	public String exibirPaginaTurma(Turma turma) {
 		return "pagina-turma";
 	}
-	
+
 	@GetMapping("/exibirAlterarTruma")
-	public String exibirAlterarTruma(Turma turma,Integer codigo, Model model) {
+	public String exibirAlterarTruma(Turma turma, Integer codigo, Model model) {
 		Turma cont = this.turmaService.buscarTurma(codigo);
 		model.addAttribute("turma", cont);
+		this.turmas.remove(turma);
+		this.turmas.add(turma);
 		this.turmaService.removerTurma(codigo);
 		this.turmaService.inserirTurma(turma);
 		return "turma-alterar";
 	}
-	
+
 	@GetMapping("/exibirFormTurma")
 	public String exibirForm(Turma turma) {
 		return "turma-form";
 	}
-	
+
 	@GetMapping("/excluirTurma")
-	public String excluirTurma(Integer codigo) {
+	public String excluirTurma(Turma turma, Integer codigo) {
+		this.turmas.remove(turma);
 		this.turmaService.removerTurma(codigo);
-		return "redirect:/listarTurmas";
+		return "turma-list";
 	}
-	
+
 	@PostMapping("/salvarTurma")
 	public String salvarTurma(Turma turma) {
 		this.turmas.remove(turma);
@@ -53,11 +56,11 @@ public class TurmaController {
 		System.out.println(turma);
 		return "redirect:/listarTurmas";
 	}
-	
+
 	@GetMapping("/listarTurmas")
 	public String listarTurmas(Model model) {
 		model.addAttribute("listarTurmas", turmas);
 		return "turma-list";
 	}
-	
+
 }

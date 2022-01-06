@@ -4,9 +4,19 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listagem de materias</title>
+<title>Listagem de Materias</title>
 </head>
 <body>
+
+	<h4>Listagem de Materias</h4>
+
+	<br>
+	<a href="/">Voltar Para o Index</a>
+	<br>
+	<a href="/exibirMateria">Pagina da Materia</a>
+	<br>
+	<a href="/exibirFormMateria">Formulario de Materia</a>
+	<br>
 
 	<div>
 		<table>
@@ -16,7 +26,7 @@
 				<th>conteudo</th>
 				<th>ações</th>
 			</tr>
-			<tr th:each="cont : ${listaMateria}">
+			<tr th:each="cont : ${listarMateria}">
 				<td th:text="${cont.codigo}"></td>
 				<td th:text="${cont.nome}"></td>
 				<td th:text="${cont.conteudo}">

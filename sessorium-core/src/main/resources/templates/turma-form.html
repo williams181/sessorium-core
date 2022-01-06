@@ -4,20 +4,31 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>formulario salvar turma</title>
+<title>Formulario Salvar Turma</title>
 </head>
 <body>
+
+	<h4>Formulario Salvar Turma</h4>
+
+	<br>
+	<a href="/">Voltar Para o Index</a>
+	<br>
+	<a href="/exibirTurma">Pagina da Turma</a>
+	<br>
+	<a href="/listarTurmas">Lista de Turmas</a>
+	<br>
 
 	<form action="/salvarTurma" method="post">
 
 		<label for="nome">Nome:</label><br> <input type="text" id="nome"
 			name="nome"><br> <label for="ano">ano:</label><br>
 
-		<input type="date" id="ano" name="ano"> <br>
-		<br>
+		<input type="date" id="ano" name="ano"> <br> <br>
 
 		<button type="submit">Salvar</button>
 	</form>
+
+	<br>
 
 </body>
 </html>

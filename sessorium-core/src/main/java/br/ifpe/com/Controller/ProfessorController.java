@@ -26,30 +26,33 @@ public class ProfessorController {
 	public String exibirPaginaProfessor(Professor professor) {
 		return "pagina-professor";
 	}
-	
+
 	@ModelAttribute("enum_formacao")
 	public Formacao[] getEnumFormacao() {
 		return Formacao.values();
 	}
-	
+
 	@GetMapping("/exibirAlterarProfessor")
-	public String exibirAlterarProfessor(Professor professor,Integer codigo, Model model) {
+	public String exibirAlterarProfessor(Professor professor, Integer codigo, Model model) {
 		Professor cont = this.professorService.buscarProfessor(codigo);
 		model.addAttribute("professor", cont);
+		this.professores.remove(professor);
+		this.professores.add(professor);
 		this.professorService.removerProfessor(codigo);
 		this.professorService.inserirProfessor(professor);
 		return "professor-alterar";
 	}
-	
+
 	@GetMapping("/exibirFormProfessor")
 	public String exibirForm(Professor professor) {
 		return "professor-form";
 	}
-	
+
 	@GetMapping("/excluirProfessor")
-	public String excluirProfessor(Integer codigo) {
+	public String excluirProfessor(Professor professor, Integer codigo) {
+		this.professores.remove(professor);
 		this.professorService.removerProfessor(codigo);
-		return "redirect:/listarProfessores";
+		return "professor-list";
 	}
 
 	@PostMapping("/salvarProfessor")
@@ -60,7 +63,7 @@ public class ProfessorController {
 		System.out.println(professor);
 		return "redirect:/listarProfessores";
 	}
-	
+
 	@GetMapping("/listarProfessores")
 	public String listarProfessores(Model model) {
 		model.addAttribute("listarProfessor", professores);

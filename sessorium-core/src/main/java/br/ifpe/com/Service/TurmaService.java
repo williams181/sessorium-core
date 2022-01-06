@@ -10,23 +10,24 @@ import br.ifpe.com.Model.Turma;
 
 @Service
 public class TurmaService {
-	
+
 	@Autowired
 	private TurmaDao daoTurma;
 
 	public void inserirTurma(Turma turma) {
 		daoTurma.save(turma);
 	}
-	
-	public void removerTurma(Integer id) {
-		daoTurma.deleteById(id);
+
+	public void removerTurma(Integer codigo) {
+		daoTurma.deleteById(codigo);
 	}
-	
-	public List<Turma> listarTurmas(){
+
+	public List<Turma> listarTurmas() {
 		return daoTurma.findAll();
 	}
-	public Turma buscarTurma(Integer id) {
-		return daoTurma.findById(id).get();
+
+	public Turma buscarTurma(Integer codigo) {
+		return daoTurma.findById(codigo).get();
 	}
-	
+
 }

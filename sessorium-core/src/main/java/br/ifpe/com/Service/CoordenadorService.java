@@ -18,15 +18,15 @@ public class CoordenadorService {
 		daoCoordenador.save(coordenador);
 	}
 	
-	public void removerCoordenador(Integer id) {
-		daoCoordenador.deleteById(id);
+	public void removerCoordenador(Integer codigo) {
+		daoCoordenador.deleteById(codigo);
 	}
 	
 	public List<Coordenador> listarCoordenadores(){
 		return daoCoordenador.findAll();
 	}
-	public Coordenador buscarCoordenador(Integer id) {
-		return daoCoordenador.findById(id).get();
+	public Coordenador buscarCoordenador(Integer codigo) {
+		return daoCoordenador.findById(codigo).get();
 	}
 
 }

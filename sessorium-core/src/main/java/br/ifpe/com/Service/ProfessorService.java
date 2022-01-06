@@ -17,15 +17,16 @@ public class ProfessorService {
 	public void inserirProfessor(Professor professor) {
 		daoProfessor.save(professor);
 	}
-	
-	public void removerProfessor(Integer id) {
-		daoProfessor.deleteById(id);
+
+	public void removerProfessor(Integer codigo) {
+		daoProfessor.deleteById(codigo);
 	}
-	
-	public List<Professor> listarProfessores(){
+
+	public List<Professor> listarProfessores() {
 		return daoProfessor.findAll();
 	}
-	public Professor buscarProfessor(Integer id) {
-		return daoProfessor.findById(id).get();
+
+	public Professor buscarProfessor(Integer codigo) {
+		return daoProfessor.findById(codigo).get();
 	}
 }

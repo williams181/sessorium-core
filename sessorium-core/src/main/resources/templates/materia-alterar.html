@@ -4,20 +4,34 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>formulario alterar materia</title>
+<title>Formulario Alterar Materia</title>
 </head>
 <body>
+
+	<h4>Formulario Alterar Materia</h4>
+
+	<br>
+	<a href="/">Voltar Para o Index</a>
+	<br>
+	<a href="/exibirMateria">Pagina da Materia</a>
+	<br>
+	<a href="/exibirFormMateria">Formulario de Materia</a>
+	<br>
+	<a href="/listarMaterias">Lista de Materias</a>
+	<br>
 
 	<form action="/salvarMateria" method="post" th:object="${materia}">
 
 		<label for="nome">Nome:</label><br> <input type="text" id="nome"
-			name="nome" th:field="*{nome}"><br> <label for="conteudo">Conteudo:</label><br>
-
-		<input type="text" id="conteudo" name="conteudo" th:field="*{conteudo}"><br>
+			name="nome" th:field="*{nome}"><br> <label
+			for="conteudo">Conteudo:</label><br> <input type="text"
+			id="conteudo" name="conteudo" th:field="*{conteudo}"><br>
 		<br>
 
 		<button type="submit">alterar</button>
 	</form>
+
+	<br>
 
 </body>
 </html>

@@ -33,9 +33,11 @@ public class AlunoController {
 	}
 
 	@GetMapping("/exibirAlterarAluno")
-	public String exibirAlterarAluno(Aluno aluno,Integer codigo, Model model) {
+	public String exibirAlterarAluno(Aluno aluno, Integer codigo, Model model) {
 		Aluno cont = this.alunoService.buscarAluno(codigo);
 		model.addAttribute("aluno", cont);
+		this.alunos.remove(aluno);
+		this.alunos.add(aluno);
 		this.alunoService.removerAluno(codigo);
 		this.alunoService.inserirAluno(aluno);
 		return "aluno-alterar";
@@ -47,9 +49,10 @@ public class AlunoController {
 	}
 
 	@GetMapping("/excluirAluno")
-	public String excluirAluno(Integer codigo) {
+	public String excluirAluno(Aluno aluno, Integer codigo) {
+		this.alunos.remove(aluno);
 		this.alunoService.removerAluno(codigo);
-		return "redirect:/listarAlunos";
+		return "aluno-list";
 	}
 
 	@PostMapping("/salvarAluno")
@@ -57,6 +60,7 @@ public class AlunoController {
 		this.alunos.remove(aluno);
 		this.alunos.add(aluno);
 		this.alunoService.inserirAluno(aluno);
+		System.out.println(aluno);
 		return "redirect:/listarAlunos";
 	}
 

@@ -17,16 +17,17 @@ public class MateriaService {
 	public void inserirMateria(Materia materia) {
 		daoMateria.save(materia);
 	}
-	
-	public void removerMateria(Integer id) {
-		daoMateria.deleteById(id);
+
+	public void removerMateria(Integer codigo) {
+		daoMateria.deleteById(codigo);
 	}
-	
-	public List<Materia> listarMaterias(){
+
+	public List<Materia> listarMaterias() {
 		return daoMateria.findAll();
 	}
-	public Materia buscarMateria(Integer id) {
-		return daoMateria.findById(id).get();
+
+	public Materia buscarMateria(Integer codigo) {
+		return daoMateria.findById(codigo).get();
 	}
-	
+
 }
