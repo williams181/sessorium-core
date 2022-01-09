@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.ifpe.com.Enumeration.CategoriaEscola;
+
 @Entity
 public class Escola {
 

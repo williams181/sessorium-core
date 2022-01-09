@@ -5,6 +5,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import br.ifpe.com.Enumeration.UF;
+
 
 @Embeddable
 public class Cidade {

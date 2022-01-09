@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.ifpe.com.Enumeration.Formacao;
 import br.ifpe.com.Model.Coordenador;
-import br.ifpe.com.Model.Formacao;
 import br.ifpe.com.Service.CoordenadorService;
 
 @Controller

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.ifpe.com.Enumeration.CategoriaPcd;
 import br.ifpe.com.Model.Aluno;
-import br.ifpe.com.Model.CategoriaPcd;
 import br.ifpe.com.Service.AlunoService;
 
 @Controller

@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.ifpe.com.Enumeration.Semestre;
+import br.ifpe.com.Enumeration.Turno;
+
 @Entity
 public class Turma {
 

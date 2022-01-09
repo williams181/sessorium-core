@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import br.ifpe.com.Enumeration.CategoriaPcd;
+
 @Entity
 public class Aluno extends Pessoa {
 

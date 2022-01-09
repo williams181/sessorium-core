@@ -1,4 +1,4 @@
-package br.ifpe.com.Model;
+package br.ifpe.com.Enumeration;
 
 public enum CategoriaPcd {
 
