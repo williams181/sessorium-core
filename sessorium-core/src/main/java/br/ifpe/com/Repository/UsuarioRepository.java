@@ -5,12 +5,11 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.ifpe.com.Model.Aluno;
+import br.ifpe.com.Model.Usuario;
 
 @Repository
-public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	@Transactional
-	public Aluno findByNome(String nome);
-
+	public Usuario findByNome(String nome);
 }

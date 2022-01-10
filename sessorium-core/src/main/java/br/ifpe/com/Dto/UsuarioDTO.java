@@ -1,23 +1,18 @@
-package br.ifpe.com.Model;
+package br.ifpe.com.Dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-public class Usuario implements Serializable {
+import br.ifpe.com.Model.Endereco;
 
-	private static final long serialVersionUID = 1L;
+public class UsuarioDTO implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = -7564377109119844314L;
+
 	private Integer codigo;
 
 	private String nome;
@@ -100,7 +95,7 @@ public class Usuario implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public Usuario(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+	public UsuarioDTO(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
 			Endereco endereco, byte[] foto) {
 		super();
 		this.codigo = codigo;
@@ -113,7 +108,7 @@ public class Usuario implements Serializable {
 		this.foto = foto;
 	}
 
-	public Usuario() {
+	public UsuarioDTO() {
 
 	}
 

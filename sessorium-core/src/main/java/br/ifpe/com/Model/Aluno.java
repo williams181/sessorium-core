@@ -1,5 +1,7 @@
 package br.ifpe.com.Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,8 +9,10 @@ import javax.persistence.Enumerated;
 import br.ifpe.com.Enumeration.CategoriaPcd;
 
 @Entity
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements Serializable {
 
+	private static final long serialVersionUID = -3841767074058761381L;
+	
 	private String obs;
 	
 	private String matricula;
