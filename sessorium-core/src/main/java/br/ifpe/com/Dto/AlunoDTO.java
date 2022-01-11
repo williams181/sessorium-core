@@ -1,16 +1,12 @@
 package br.ifpe.com.Dto;
 
-import java.io.Serializable;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import br.ifpe.com.Enumeration.CategoriaPcd;
 import br.ifpe.com.Model.Pais;
 
-public class AlunoDTO implements Serializable {
-
-	private static final long serialVersionUID = -8912399363816703224L;
+public class AlunoDTO {
 
 	private String obs;
 

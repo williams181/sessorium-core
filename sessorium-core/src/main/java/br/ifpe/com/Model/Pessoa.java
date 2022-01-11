@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @MappedSuperclass
 public class Pessoa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
@@ -30,7 +30,7 @@ public class Pessoa {
 
 	@OneToOne
 	private Endereco endereco;
-	
+
 	private byte[] foto;
 
 	public String getNome() {
@@ -96,5 +96,22 @@ public class Pessoa {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-	
+
+	public Pessoa(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, byte[] foto) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+		this.endereco = endereco;
+		this.foto = foto;
+	}
+
+	public Pessoa() {
+
+	}
+
 }

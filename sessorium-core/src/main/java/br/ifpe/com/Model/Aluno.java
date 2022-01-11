@@ -1,6 +1,6 @@
 package br.ifpe.com.Model;
 
-import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,12 +9,10 @@ import javax.persistence.Enumerated;
 import br.ifpe.com.Enumeration.CategoriaPcd;
 
 @Entity
-public class Aluno extends Pessoa implements Serializable {
+public class Aluno extends Pessoa {
 
-	private static final long serialVersionUID = -3841767074058761381L;
-	
 	private String obs;
-	
+
 	private String matricula;
 
 	private boolean pcd;
@@ -72,6 +70,28 @@ public class Aluno extends Pessoa implements Serializable {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	public Aluno(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, byte[] foto, String obs, String matricula, boolean pcd, CategoriaPcd categoriaPcd,
+			String descricao, Pais pais) {
+		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco, foto);
+		this.obs = obs;
+		this.matricula = matricula;
+		this.pcd = pcd;
+		this.categoriaPcd = categoriaPcd;
+		this.descricao = descricao;
+		this.pais = pais;
+	}
+
+	public Aluno() {
+
+	}
+
+	public Aluno(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, byte[] foto) {
+		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco, foto);
+		// TODO Auto-generated constructor stub
 	}
 
 }
