@@ -5,15 +5,18 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Embeddable
 public class Curso {
-	
-	@Column(name="curso")
+
+	@Column(name = "curso")
 	private String nome;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataInicio;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataConclusao;
 
 	public String getNome() {
@@ -40,5 +43,15 @@ public class Curso {
 		this.dataConclusao = dataConclusao;
 	}
 
+	public Curso(String nome, LocalDate dataInicio, LocalDate dataConclusao) {
+		super();
+		this.nome = nome;
+		this.dataInicio = dataInicio;
+		this.dataConclusao = dataConclusao;
+	}
+
+	public Curso() {
+
+	}
 
 }

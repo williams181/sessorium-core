@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,11 +25,13 @@ public class Turma {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
 
+	@NotNull
 	private int totalMeses;
 
 	@Enumerated(EnumType.STRING)
@@ -104,6 +108,23 @@ public class Turma {
 
 	public void setSemestre(Semestre semestre) {
 		this.semestre = semestre;
+	}
+
+	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome, LocalDate ano,
+			@NotNull int totalMeses, Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.ano = ano;
+		this.totalMeses = totalMeses;
+		this.semestre = semestre;
+		this.turno = turno;
+		this.alunos = alunos;
+		this.materias = materias;
+	}
+
+	public Turma() {
+
 	}
 
 }

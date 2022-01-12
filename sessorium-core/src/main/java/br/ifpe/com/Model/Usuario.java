@@ -1,40 +1,36 @@
 package br.ifpe.com.Model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Usuario implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String email;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String cpf;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
-
-	@OneToOne
-	private Endereco endereco;
-
-	private byte[] foto;
 
 	public String getNome() {
 		return nome;
@@ -76,22 +72,6 @@ public class Usuario implements Serializable {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}
-
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -100,8 +80,10 @@ public class Usuario implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public Usuario(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
-			Endereco endereco, byte[] foto) {
+	public Usuario(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+			@NotEmpty(message = "Preencimento obrigatório") String email,
+			@NotEmpty(message = "Preencimento obrigatório") String telefone,
+			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -109,8 +91,6 @@ public class Usuario implements Serializable {
 		this.telefone = telefone;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-		this.endereco = endereco;
-		this.foto = foto;
 	}
 
 	public Usuario() {

@@ -8,8 +8,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
 
 import br.ifpe.com.Enumeration.CategoriaEscola;
 
@@ -19,28 +21,33 @@ public class Escola {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
-	
+
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
-	
+
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String cnpj;
-	
+
 	@OneToOne
+	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
-	
+
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
-	
+
 	@Enumerated(EnumType.STRING)
 	private CategoriaEscola categoriaEscola;
-	
+
 	@OneToMany
 	private List<Professor> Professores;
-	
+
 	@OneToMany
 	private List<Turma> turmas;
-	
+
 	@OneToOne
+	@JoinColumn(name = "coordenador_id")
 	private Coordenador coordenador;
-	
+
 	public List<Turma> getTurmas() {
 		return turmas;
 	}
@@ -112,5 +119,25 @@ public class Escola {
 	public void setProfessores(List<Professor> professores) {
 		Professores = professores;
 	}
-	
+
+	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
+			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
+			List<Professor> professores, List<Turma> turmas, Coordenador coordenador) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.categoriaEscola = categoriaEscola;
+		Professores = professores;
+		this.turmas = turmas;
+		this.coordenador = coordenador;
+	}
+
+	public Escola() {
+
+	}
+
 }

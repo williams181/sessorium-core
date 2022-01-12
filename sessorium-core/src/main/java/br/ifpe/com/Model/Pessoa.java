@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,12 +18,16 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String email;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String cpf;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -30,8 +35,6 @@ public class Pessoa {
 
 	@OneToOne
 	private Endereco endereco;
-
-	private byte[] foto;
 
 	public String getNome() {
 		return nome;
@@ -81,14 +84,6 @@ public class Pessoa {
 		this.endereco = endereco;
 	}
 
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}
-
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -98,7 +93,7 @@ public class Pessoa {
 	}
 
 	public Pessoa(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
-			Endereco endereco, byte[] foto) {
+			Endereco endereco) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -107,7 +102,6 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
-		this.foto = foto;
 	}
 
 	public Pessoa() {

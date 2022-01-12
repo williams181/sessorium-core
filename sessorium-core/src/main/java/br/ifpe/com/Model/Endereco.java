@@ -4,25 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Endereco {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String rua;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String numero;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String bairro;
-	
+
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String complemento;
 
 	private Cidade cidade;
 
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String cep;
 
 	public String getRua() {
@@ -79,6 +84,25 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public Endereco(int codigo, @NotEmpty(message = "Preencimento obrigatório") String rua,
+			@NotEmpty(message = "Preencimento obrigatório") String numero,
+			@NotEmpty(message = "Preencimento obrigatório") String bairro,
+			@NotEmpty(message = "Preencimento obrigatório") String complemento, Cidade cidade,
+			@NotEmpty(message = "Preencimento obrigatório") String cep) {
+		super();
+		this.codigo = codigo;
+		this.rua = rua;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.complemento = complemento;
+		this.cidade = cidade;
+		this.cep = cep;
+	}
+
+	public Endereco() {
+
 	}
 
 }

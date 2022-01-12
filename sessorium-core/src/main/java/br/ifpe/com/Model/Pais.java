@@ -2,72 +2,31 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
+@Entity
+public class Pais extends Pessoa {
 
-@Embeddable
-public class Pais {
+	@NotNull
+	private boolean tutor;
 
-	private String paiNome;
-
-	private String paiEmail;
-
-	private String paiTelefone;
-
-	private String paiCpf;
-
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate paiDataNascimento;
-
-	private byte[] paiFoto;
-
-	public String getPaiNome() {
-		return paiNome;
+	public boolean isTutor() {
+		return tutor;
 	}
 
-	public void setPaiNome(String paiNome) {
-		this.paiNome = paiNome;
+	public void setTutor(boolean tutor) {
+		this.tutor = tutor;
 	}
 
-	public String getPaiEmail() {
-		return paiEmail;
+	public Pais(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, @NotNull boolean tutor) {
+		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
+		this.tutor = tutor;
 	}
 
-	public void setPaiEmail(String paiEmail) {
-		this.paiEmail = paiEmail;
-	}
+	public Pais() {
 
-	public String getPaiTelefone() {
-		return paiTelefone;
-	}
-
-	public void setPaiTelefone(String paiTelefone) {
-		this.paiTelefone = paiTelefone;
-	}
-
-	public String getPaiCpf() {
-		return paiCpf;
-	}
-
-	public void setPaiCpf(String paiCpf) {
-		this.paiCpf = paiCpf;
-	}
-
-	public LocalDate getPaiDataNascimento() {
-		return paiDataNascimento;
-	}
-
-	public void setPaiDataNascimento(LocalDate paiDataNascimento) {
-		this.paiDataNascimento = paiDataNascimento;
-	}
-
-	public byte[] getPaiFoto() {
-		return paiFoto;
-	}
-
-	public void setPaiFoto(byte[] paiFoto) {
-		this.paiFoto = paiFoto;
 	}
 
 }

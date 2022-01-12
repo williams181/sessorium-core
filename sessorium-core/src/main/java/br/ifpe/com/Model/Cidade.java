@@ -7,11 +7,10 @@ import javax.persistence.Enumerated;
 
 import br.ifpe.com.Enumeration.UF;
 
-
 @Embeddable
 public class Cidade {
-	
-	@Column(name="cidade")
+
+	@Column(name = "cidade")
 	private String nome;
 
 	@Enumerated(EnumType.STRING)
@@ -33,5 +32,14 @@ public class Cidade {
 		this.uf = uf;
 	}
 
+	public Cidade(String nome, UF uf) {
+		super();
+		this.nome = nome;
+		this.uf = uf;
+	}
+
+	public Cidade() {
+
+	}
 
 }
