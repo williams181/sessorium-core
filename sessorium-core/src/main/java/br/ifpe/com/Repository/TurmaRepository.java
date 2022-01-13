@@ -1,9 +1,9 @@
 package br.ifpe.com.Repository;
 
-public class TurmaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public TurmaRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import br.ifpe.com.Model.Turma;
+
+public interface TurmaRepository extends JpaRepository<Turma, Integer> {
 
 }

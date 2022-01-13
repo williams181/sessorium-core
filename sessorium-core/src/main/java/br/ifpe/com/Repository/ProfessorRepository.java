@@ -1,9 +1,10 @@
 package br.ifpe.com.Repository;
 
-public class ProfessorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public ProfessorRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import br.ifpe.com.Model.Professor;
+
+public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
+
 
 }

@@ -1,9 +1,9 @@
 package br.ifpe.com.Repository;
 
-public class EscolaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public EscolaRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import br.ifpe.com.Model.Escola;
+
+public interface EscolaRepository extends JpaRepository<Escola, Integer> {
 
 }

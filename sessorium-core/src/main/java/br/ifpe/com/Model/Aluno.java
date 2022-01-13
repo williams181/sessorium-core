@@ -95,4 +95,16 @@ public class Aluno extends Pessoa {
 
 	}
 
+	public Aluno(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, @NotEmpty(message = "Preencimento obrigatório") String obs,
+			@NotEmpty(message = "Preencimento obrigatório") String matricula, @NotNull boolean pcd,
+			CategoriaPcd categoriaPcd, @NotEmpty(message = "Preencimento obrigatório") String descricao) {
+		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
+		this.obs = obs;
+		this.matricula = matricula;
+		this.pcd = pcd;
+		this.categoriaPcd = categoriaPcd;
+		this.descricao = descricao;
+	}
+
 }

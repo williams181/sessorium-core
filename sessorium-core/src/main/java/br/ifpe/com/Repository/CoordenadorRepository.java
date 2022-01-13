@@ -1,9 +1,10 @@
 package br.ifpe.com.Repository;
 
-public class CoordenadorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public CoordenadorRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import br.ifpe.com.Model.Coordenador;
+
+public interface CoordenadorRepository extends JpaRepository<Coordenador, Integer> {
+
 
 }

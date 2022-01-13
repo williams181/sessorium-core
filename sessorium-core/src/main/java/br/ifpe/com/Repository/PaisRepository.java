@@ -1,5 +1,9 @@
 package br.ifpe.com.Repository;
 
-public class PaisRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.ifpe.com.Model.Pais;
+
+public interface PaisRepository extends JpaRepository<Pais, Integer> {
 
 }

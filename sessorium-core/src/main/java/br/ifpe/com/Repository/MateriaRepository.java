@@ -1,9 +1,9 @@
 package br.ifpe.com.Repository;
 
-public class MateriaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public MateriaRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import br.ifpe.com.Model.Materia;
+
+public interface MateriaRepository extends JpaRepository<Materia, Integer> {
 
 }
