@@ -81,8 +81,7 @@ public class Materia {
 	}
 
 	public Materia() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 }

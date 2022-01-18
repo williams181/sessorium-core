@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -28,6 +29,9 @@ public class Atividade {
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String descricao;
+
+	@Lob
+	private Byte[] arquivo;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -69,14 +73,23 @@ public class Atividade {
 		this.descricao = descricao;
 	}
 
+	public Byte[] getArquivo() {
+		return arquivo;
+	}
+
+	public void setArquivo(Byte[] arquivo) {
+		this.arquivo = arquivo;
+	}
+
 	public Atividade(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate dtInicio,
-			LocalDate dtFim, @NotEmpty(message = "Preencimento obrigatório") String descricao) {
+			LocalDate dtFim, @NotEmpty(message = "Preencimento obrigatório") String descricao, Byte[] arquivo) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.dtInicio = dtInicio;
 		this.dtFim = dtFim;
 		this.descricao = descricao;
+		this.arquivo = arquivo;
 	}
 
 	public Atividade() {
