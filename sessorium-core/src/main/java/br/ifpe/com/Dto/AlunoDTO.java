@@ -1,5 +1,6 @@
 package br.ifpe.com.Dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.EnumType;
@@ -12,7 +13,9 @@ import br.ifpe.com.Model.Endereco;
 import br.ifpe.com.Model.Pais;
 import br.ifpe.com.Model.Pessoa;
 
-public class AlunoDTO extends Pessoa {
+public class AlunoDTO extends Pessoa implements Serializable {
+
+	private static final long serialVersionUID = -4614809525406962588L;
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String obs;
