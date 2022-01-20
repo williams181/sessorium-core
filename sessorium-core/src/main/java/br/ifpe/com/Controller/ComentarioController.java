@@ -22,7 +22,7 @@ public class ComentarioController {
 
 	@GetMapping("/exibirComentario")
 	public String exibirPaginaComentario(Comentario comentario) {
-		return "pagina-comentario";
+		return "comentario/pagina-comentario";
 	}
 
 	@GetMapping("/exibirAlterarComentario")
@@ -33,19 +33,19 @@ public class ComentarioController {
 		this.comentarios.add(comentario);
 		this.comentarioService.removerComentario(codigo);
 		this.comentarioService.inserirComentario(comentario);
-		return "comentario-alterar";
+		return "comentario/comentario-alterar";
 	}
 
 	@GetMapping("/exibirFormComentario")
 	public String exibirForm(Comentario comentario) {
-		return "comentario-form";
+		return "comentario/comentario-form";
 	}
 
 	@GetMapping("/excluirComentario")
 	public String excluirComentario(Comentario comentario, Integer codigo) {
 		this.comentarios.remove(comentario);
 		this.comentarioService.removerComentario(codigo);
-		return "comentario-list";
+		return "comentario/comentario-list";
 	}
 
 	@PostMapping("/salvarComentario")
@@ -60,7 +60,7 @@ public class ComentarioController {
 	@GetMapping("/listarComentarios")
 	public String listarComentarios(Model model) {
 		model.addAttribute("listarComentario", comentarios);
-		return "comentario-list";
+		return "comentario/comentario-list";
 	}
 	
 }

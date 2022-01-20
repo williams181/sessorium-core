@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,9 +22,13 @@ public class Atividade {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String titulo;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dtInicio;
+	@ManyToOne
+	private Materia materia;
+	
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+//	private LocalDate dtInicio;
 
+	// alterar para data de entrega
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dtFim;
 
@@ -49,13 +54,13 @@ public class Atividade {
 		this.titulo = titulo;
 	}
 
-	public LocalDate getDtInicio() {
-		return dtInicio;
-	}
-
-	public void setDtInicio(LocalDate dtInicio) {
-		this.dtInicio = dtInicio;
-	}
+//	public LocalDate getDtInicio() {
+//		return dtInicio;
+//	}
+//
+//	public void setDtInicio(LocalDate dtInicio) {
+//		this.dtInicio = dtInicio;
+//	}
 
 	public LocalDate getDtFim() {
 		return dtFim;
@@ -78,17 +83,6 @@ public class Atividade {
 	}
 
 	public void setArquivo(Byte[] arquivo) {
-		this.arquivo = arquivo;
-	}
-
-	public Atividade(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate dtInicio,
-			LocalDate dtFim, @NotEmpty(message = "Preencimento obrigatório") String descricao, Byte[] arquivo) {
-		super();
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.dtInicio = dtInicio;
-		this.dtFim = dtFim;
-		this.descricao = descricao;
 		this.arquivo = arquivo;
 	}
 

@@ -44,9 +44,11 @@ public class Escola {
 	@OneToMany
 	private List<Turma> turmas;
 
-	@OneToOne
-	@JoinColumn(name = "coordenador_id")
-	private Coordenador coordenador;
+//	@OneToOne
+//	@JoinColumn(name = "coordenador_id")
+//	private Coordenador coordenador;
+	
+	private Integer totalUnidade;
 
 	public List<Turma> getTurmas() {
 		return turmas;
@@ -56,13 +58,13 @@ public class Escola {
 		this.turmas = turmas;
 	}
 
-	public Coordenador getCoordenador() {
-		return coordenador;
-	}
-
-	public void setCoordenador(Coordenador coordenador) {
-		this.coordenador = coordenador;
-	}
+//	public Coordenador getCoordenador() {
+//		return coordenador;
+//	}
+//
+//	public void setCoordenador(Coordenador coordenador) {
+//		this.coordenador = coordenador;
+//	}
 
 	public String getNome() {
 		return nome;
@@ -120,10 +122,22 @@ public class Escola {
 		Professores = professores;
 	}
 
+	public Integer getTotalUnidade() {
+		return totalUnidade;
+	}
+
+	public void setTotalUnidade(Integer totalUnidade) {
+		this.totalUnidade = totalUnidade;
+	}
+
+	public Escola() {
+
+	}
+
 	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
 			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
 			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
-			List<Professor> professores, List<Turma> turmas, Coordenador coordenador) {
+			List<Professor> professores, List<Turma> turmas, Integer totalUnidade) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -133,11 +147,7 @@ public class Escola {
 		this.categoriaEscola = categoriaEscola;
 		Professores = professores;
 		this.turmas = turmas;
-		this.coordenador = coordenador;
-	}
-
-	public Escola() {
-
+		this.totalUnidade = totalUnidade;
 	}
 
 }

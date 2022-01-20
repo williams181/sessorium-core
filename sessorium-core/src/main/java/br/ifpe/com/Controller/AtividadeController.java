@@ -22,7 +22,7 @@ public class AtividadeController {
 
 	@GetMapping("/exibirAtividade")
 	public String exibirPaginaAtividade(Atividade atividade) {
-		return "pagina-atividade";
+		return "atividade/pagina-atividade";
 	}
 
 	@GetMapping("/exibirAlterarAtividade")
@@ -33,19 +33,19 @@ public class AtividadeController {
 		this.atividades.add(atividade);
 		this.atividadeService.removerAtividade(codigo);
 		this.atividadeService.inserirAtividade(atividade);
-		return "atividade-alterar";
+		return "atividade/atividade-alterar";
 	}
 
 	@GetMapping("/exibirFormAtividade")
 	public String exibirForm(Atividade atividade) {
-		return "atividade-form";
+		return "atividade/atividade-form";
 	}
 
 	@GetMapping("/excluirAtividade")
 	public String excluirAluno(Atividade atividade, Integer codigo) {
 		this.atividades.remove(atividade);
 		this.atividadeService.removerAtividade(codigo);
-		return "atividade-list";
+		return "atividade/atividade-list";
 	}
 
 	@PostMapping("/salvarAtividade")
@@ -60,7 +60,7 @@ public class AtividadeController {
 	@GetMapping("/listarAtividades")
 	public String listarAtividades(Model model) {
 		model.addAttribute("listarAtividade", atividades);
-		return "atividade-list";
+		return "atividade/atividade-list";
 	}
 
 }

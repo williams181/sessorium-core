@@ -22,7 +22,7 @@ public class AdministradorController {
 
 	@GetMapping("/exibirAdministrador")
 	public String exibirPaginaAdministrador(Administrador administrador) {
-		return "pagina-Administrador";
+		return "administrador/pagina-Administrador";
 	}
 
 	@GetMapping("/exibirAlterarAdministrador")
@@ -33,19 +33,19 @@ public class AdministradorController {
 		this.administradores.add(administrador);
 		this.administradorService.removerAdministrador(codigo);
 		this.administradorService.inserirAdministrador(administrador);
-		return "administrador-alterar";
+		return "administrador/administrador-alterar";
 	}
 
 	@GetMapping("/exibirFormAdministrador")
 	public String exibirForm(Administrador administrador) {
-		return "administrador-form";
+		return "administrador/administrador-form";
 	}
 
 	@GetMapping("/excluirAdministrador")
 	public String excluirAdministrador(Administrador administrador, Integer codigo) {
 		this.administradores.remove(administrador);
 		this.administradorService.removerAdministrador(codigo);
-		return "administrador-list";
+		return "administrador/administrador-list";
 	}
 
 	@PostMapping("/salvarAdministrador")
@@ -60,6 +60,6 @@ public class AdministradorController {
 	@GetMapping("/listarAdministradores")
 	public String listarAdministrador(Model model) {
 		model.addAttribute("listarAdministrador", administradores);
-		return "administrador-list";
+		return "administrador/administrador-list";
 	}
 }

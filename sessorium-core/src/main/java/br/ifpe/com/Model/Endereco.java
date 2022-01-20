@@ -11,7 +11,7 @@ public class Endereco {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo;
+	private Integer codigo;
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String rua;
@@ -84,25 +84,6 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
-	}
-
-	public Endereco(int codigo, @NotEmpty(message = "Preencimento obrigatório") String rua,
-			@NotEmpty(message = "Preencimento obrigatório") String numero,
-			@NotEmpty(message = "Preencimento obrigatório") String bairro,
-			@NotEmpty(message = "Preencimento obrigatório") String complemento, Cidade cidade,
-			@NotEmpty(message = "Preencimento obrigatório") String cep) {
-		super();
-		this.codigo = codigo;
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.complemento = complemento;
-		this.cidade = cidade;
-		this.cep = cep;
-	}
-
-	public Endereco() {
-
 	}
 
 }

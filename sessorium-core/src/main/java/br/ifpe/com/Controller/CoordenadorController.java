@@ -29,7 +29,7 @@ public class CoordenadorController {
 
 	@GetMapping("/exibirCoordenador")
 	public String exibirPaginaCoordenador(Coordenador coordenador) {
-		return "pagina-coordenador";
+		return "coordenador/pagina-coordenador";
 	}
 	
 	@ModelAttribute("enum_formacao")
@@ -45,19 +45,19 @@ public class CoordenadorController {
 		this.coordenadores.add(coordenador)
 ;		this.coordenadorService.removerCoordenador(codigo);
 		this.coordenadorService.inserirCoordenador(coordenador);
-		return "coordenador-alterar";
+		return "coordenador/coordenador-alterar";
 	}
 	
 	@GetMapping("/exibirFormCoordenador")
 	public String exibirForm(Coordenador coordenador) {
-		return "coordenador-form";
+		return "coordenador/coordenador-form";
 	}
 	
 	@GetMapping("/excluirCoordenador")
 	public String excluirCoordenador(Coordenador coordenador, Integer codigo) {
 		this.coordenadores.remove(coordenador);
 		this.coordenadorService.removerCoordenador(codigo);
-		return "coordenador-list";
+		return "coordenador/coordenador-list";
 	}
 
 	@PostMapping("/salvarCoordenador")
@@ -72,7 +72,7 @@ public class CoordenadorController {
 	@GetMapping("/listarCoordenadores")
 	public String listarCoordenadores(Model model) {
 		model.addAttribute("listarCoordenador", coordenadores);
-		return "coordenador-list";
+		return "coordenador/coordenador-list";
 	}
 
 }

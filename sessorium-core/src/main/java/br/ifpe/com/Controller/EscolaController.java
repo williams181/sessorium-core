@@ -22,7 +22,7 @@ public class EscolaController {
 
 	@GetMapping("/exibirEscola")
 	public String exibirPaginaEscola(Escola escola) {
-		return "pagina-escola";
+		return "escola/pagina-escola";
 	}
 	
 
@@ -34,19 +34,19 @@ public class EscolaController {
 		this.escolas.add(escola);
 		this.escolaService.removerEscola(codigo);
 		this.escolaService.inserirEscola(escola);
-		return "escola-alterar";
+		return "escola/escola-alterar";
 	}
 	
 	@GetMapping("/exibirFormEscola")
 	public String exibirForm(Escola escola) {
-		return "escola-form";
+		return "escola/escola-form";
 	}
 	
 	@GetMapping("/excluirEscola")
 	public String excluirEscola(Escola escola, Integer codigo) {
 		this.escolas.remove(escola);
 		this.escolaService.removerEscola(codigo);
-		return "escola-list";
+		return "escola/escola-list";
 	}
 
 	@PostMapping("/salvarEscola")
@@ -61,6 +61,6 @@ public class EscolaController {
 	@GetMapping("/listarEscolas")
 	public String listarEscolas(Model model) {
 		model.addAttribute("listarEscola", escolas);
-		return "escola-list";
+		return "escola/escola-list";
 	}
 }

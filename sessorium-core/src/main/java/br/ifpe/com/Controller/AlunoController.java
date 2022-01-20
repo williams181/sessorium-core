@@ -24,7 +24,7 @@ public class AlunoController {
 
 	@GetMapping("/exibirAluno")
 	public String exibirPaginaAluno(Aluno aluno) {
-		return "pagina-aluno";
+		return "aluno/pagina-aluno";
 	}
 
 	@ModelAttribute("enum_categoriaPcd")
@@ -40,19 +40,19 @@ public class AlunoController {
 		this.alunos.add(aluno);
 		this.alunoService.removerAluno(codigo);
 		this.alunoService.inserirAluno(aluno);
-		return "aluno-alterar";
+		return "aluno/aluno-alterar";
 	}
 
 	@GetMapping("/exibirFormAluno")
 	public String exibirForm(Aluno aluno) {
-		return "aluno-form";
+		return "aluno/aluno-form";
 	}
 
 	@GetMapping("/excluirAluno")
 	public String excluirAluno(Aluno aluno, Integer codigo) {
 		this.alunos.remove(aluno);
 		this.alunoService.removerAluno(codigo);
-		return "aluno-list";
+		return "aluno/aluno-list";
 	}
 
 	@PostMapping("/salvarAluno")
@@ -67,7 +67,7 @@ public class AlunoController {
 	@GetMapping("/listarAlunos")
 	public String listarAlunos(Model model) {
 		model.addAttribute("listarAluno", alunos);
-		return "aluno-list";
+		return "aluno/aluno-list";
 	}
 
 }
