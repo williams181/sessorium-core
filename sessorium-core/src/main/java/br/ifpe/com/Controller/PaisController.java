@@ -41,7 +41,7 @@ public class PaisController {
 	}
 
 	@GetMapping("/excluirPais")
-	public String excluirAluno(Pais pais, Integer codigo) {
+	public String excluirPais(Pais pais, Integer codigo) {
 		this.pais.remove(pais);
 		this.paisService.removerPais(codigo);
 		return "aluno-list";

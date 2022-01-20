@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Turma;
-import br.ifpe.com.Model.Usuario;
 import br.ifpe.com.Repository.TurmaRepository;
 
 @RestController
@@ -46,11 +45,11 @@ public class TurmaResourse {
 
 	@RequestMapping(value = "/turma/{codigo}", method = RequestMethod.PUT)
 	public ResponseEntity<Turma> Put(@PathVariable(value = "codigo") int codigo,
-			@Valid @RequestBody Usuario newTurma) {
+			@Valid @RequestBody Turma newTurma) {
 		Optional<Turma> oldTurma = turmaRepository.findById(codigo);
 		if (oldTurma.isPresent()) {
 			Turma turma = oldTurma.get();
-			turma.setNome(newTurma.getNome());
+			turma.setTitulo(newTurma.getTitulo());
 			turmaRepository.save(turma);
 			return new ResponseEntity<Turma>(turma, HttpStatus.OK);
 		} else

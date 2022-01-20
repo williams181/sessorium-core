@@ -1,7 +1,5 @@
 package br.ifpe.com.Repository;
 
-import javax.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +7,5 @@ import br.ifpe.com.Model.Aluno;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
-
-	@Transactional
-	public Aluno findByNome(String nome);
 
 }

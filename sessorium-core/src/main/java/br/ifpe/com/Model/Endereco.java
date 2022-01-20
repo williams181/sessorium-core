@@ -86,4 +86,23 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
+	public Endereco(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String rua,
+			@NotEmpty(message = "Preencimento obrigatório") String numero,
+			@NotEmpty(message = "Preencimento obrigatório") String bairro,
+			@NotEmpty(message = "Preencimento obrigatório") String complemento, Cidade cidade,
+			@NotEmpty(message = "Preencimento obrigatório") String cep) {
+		super();
+		this.codigo = codigo;
+		this.rua = rua;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.complemento = complemento;
+		this.cidade = cidade;
+		this.cep = cep;
+	}
+
+	public Endereco() {
+
+	}
+
 }

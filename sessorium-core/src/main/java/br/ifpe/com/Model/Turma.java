@@ -26,7 +26,7 @@ public class Turma {
 	private Integer codigo;
 
 	@NotEmpty(message = "Preencimento obrigatório")
-	private String nome;
+	private String titulo;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
@@ -50,24 +50,20 @@ public class Turma {
 		return alunos;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public List<Materia> getMaterias() {
-		return materias;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setMaterias(List<Materia> materias) {
-		this.materias = materias;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public LocalDate getAno() {
@@ -76,22 +72,6 @@ public class Turma {
 
 	public void setAno(LocalDate ano) {
 		this.ano = ano;
-	}
-
-	public Turno getTurno() {
-		return turno;
-	}
-
-	public void setTurno(Turno turno) {
-		this.turno = turno;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
 	}
 
 	public int getTotalMeses() {
@@ -110,11 +90,31 @@ public class Turma {
 		this.semestre = semestre;
 	}
 
-	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome, LocalDate ano,
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
+
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate ano,
 			@NotNull int totalMeses, Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
 		super();
 		this.codigo = codigo;
-		this.nome = nome;
+		this.titulo = titulo;
 		this.ano = ano;
 		this.totalMeses = totalMeses;
 		this.semestre = semestre;

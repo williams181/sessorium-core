@@ -43,10 +43,6 @@ public class Escola {
 
 	@OneToMany
 	private List<Turma> turmas;
-
-//	@OneToOne
-//	@JoinColumn(name = "coordenador_id")
-//	private Coordenador coordenador;
 	
 	private Integer totalUnidade;
 
@@ -57,14 +53,6 @@ public class Escola {
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
 	}
-
-//	public Coordenador getCoordenador() {
-//		return coordenador;
-//	}
-//
-//	public void setCoordenador(Coordenador coordenador) {
-//		this.coordenador = coordenador;
-//	}
 
 	public String getNome() {
 		return nome;
@@ -130,10 +118,6 @@ public class Escola {
 		this.totalUnidade = totalUnidade;
 	}
 
-	public Escola() {
-
-	}
-
 	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
 			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
 			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
@@ -148,6 +132,10 @@ public class Escola {
 		Professores = professores;
 		this.turmas = turmas;
 		this.totalUnidade = totalUnidade;
+	}
+	
+	public Escola() {
+
 	}
 
 }

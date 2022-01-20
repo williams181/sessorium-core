@@ -49,7 +49,7 @@ public class MateriaResourse {
 		Optional<Materia> oldMateria = materiaRepository.findById(codigo);
 		if (oldMateria.isPresent()) {
 			Materia materia = oldMateria.get();
-			materia.setNome(newMateria.getNome());
+			materia.setTitulo(newMateria.getTitulo());
 			materiaRepository.save(materia);
 			return new ResponseEntity<Materia>(materia, HttpStatus.OK);
 		} else

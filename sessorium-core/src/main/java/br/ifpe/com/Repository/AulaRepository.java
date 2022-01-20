@@ -8,6 +8,4 @@ import br.ifpe.com.Model.Aula;
 @Repository
 public interface AulaRepository extends JpaRepository<Aula, Integer> {
 
-
-
 }

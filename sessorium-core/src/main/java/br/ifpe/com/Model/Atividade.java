@@ -25,12 +25,8 @@ public class Atividade {
 	@ManyToOne
 	private Materia materia;
 	
-//	@DateTimeFormat(pattern = "yyyy-MM-dd")
-//	private LocalDate dtInicio;
-
-	// alterar para data de entrega
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dtFim;
+	private LocalDate dataEntrega;
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String descricao;
@@ -54,20 +50,20 @@ public class Atividade {
 		this.titulo = titulo;
 	}
 
-//	public LocalDate getDtInicio() {
-//		return dtInicio;
-//	}
-//
-//	public void setDtInicio(LocalDate dtInicio) {
-//		this.dtInicio = dtInicio;
-//	}
-
-	public LocalDate getDtFim() {
-		return dtFim;
+	public Materia getMateria() {
+		return materia;
 	}
 
-	public void setDtFim(LocalDate dtFim) {
-		this.dtFim = dtFim;
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public LocalDate getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(LocalDate dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	public String getDescricao() {
@@ -83,6 +79,17 @@ public class Atividade {
 	}
 
 	public void setArquivo(Byte[] arquivo) {
+		this.arquivo = arquivo;
+	}
+	
+	public Atividade(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, Materia materia,
+			LocalDate dataEntrega, @NotEmpty(message = "Preencimento obrigatório") String descricao, Byte[] arquivo) {
+		super();
+		this.codigo = codigo;
+		this.titulo = titulo;
+		this.materia = materia;
+		this.dataEntrega = dataEntrega;
+		this.descricao = descricao;
 		this.arquivo = arquivo;
 	}
 

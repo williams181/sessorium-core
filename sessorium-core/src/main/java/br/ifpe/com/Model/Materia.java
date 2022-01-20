@@ -11,30 +11,38 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Materia {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
 	@NotEmpty(message = "Preencimento obrigatório")
-	private String nome;
-	
-	@NotEmpty(message = "Preencimento obrigatório")	
+	private String titulo;
+
+	@NotEmpty(message = "Preencimento obrigatório")
 	private String conteudo;
-	
+
 	@NotNull
 	private int cargaHoraria;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "professor_id")
 	private Professor professor;
-
-	public String getNome() {
-		return nome;
+	
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getConteudo() {
@@ -61,27 +69,19 @@ public class Materia {
 		this.professor = professor;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public Materia(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+	public Materia(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo,
 			@NotEmpty(message = "Preencimento obrigatório") String conteudo, @NotNull int cargaHoraria,
 			Professor professor) {
 		super();
 		this.codigo = codigo;
-		this.nome = nome;
+		this.titulo = titulo;
 		this.conteudo = conteudo;
 		this.cargaHoraria = cargaHoraria;
 		this.professor = professor;
 	}
 
 	public Materia() {
-		
+
 	}
-	
+
 }
