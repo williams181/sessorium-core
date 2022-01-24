@@ -39,7 +39,7 @@ public class AlunoController {
 		this.alunos.remove(aluno);
 		this.alunos.add(aluno);
 		this.alunoService.removerAluno(codigo);
-		this.alunoService.inserirAluno(aluno);
+//		this.alunoService.inserirAluno(aluno);
 		return "aluno/aluno-alterar";
 	}
 
@@ -59,7 +59,7 @@ public class AlunoController {
 	public String salvarAluno(Aluno aluno) {
 		this.alunos.remove(aluno);
 		this.alunos.add(aluno);
-		this.alunoService.inserirAluno(aluno);
+//		this.alunoService.inserirAluno(aluno);
 		System.out.println(aluno);
 		return "redirect:/listarAlunos";
 	}
