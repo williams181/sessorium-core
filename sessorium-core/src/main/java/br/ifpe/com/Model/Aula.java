@@ -16,6 +16,9 @@ public class Aula {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String titulo;
 
+	@NotEmpty(message = "Preencimento obrigatório")
+	private String link;
+
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -32,14 +35,24 @@ public class Aula {
 		this.titulo = titulo;
 	}
 
-	public Aula(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo) {
+	public Aula(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo,
+			@NotEmpty(message = "Preencimento obrigatório") String link) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
+		this.link = link;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public Aula() {
 
 	}
-	
+
 }

@@ -1,9 +1,12 @@
 package br.ifpe.com.Model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -15,6 +18,9 @@ public class Boletim {
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String titulo;
+	
+	@OneToMany
+	private List<Materia> materias;
 
 	public Integer getCodigo() {
 		return codigo;

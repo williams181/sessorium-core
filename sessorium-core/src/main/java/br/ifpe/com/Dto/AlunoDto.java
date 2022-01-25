@@ -2,6 +2,7 @@ package br.ifpe.com.Dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,14 +11,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.ifpe.com.Enumeration.CategoriaPcd;
-import br.ifpe.com.Model.Aluno;
 import br.ifpe.com.Model.Endereco;
 import br.ifpe.com.Model.Pessoa;
 
 @Entity
 public class AlunoDto extends Pessoa implements Serializable {
 
-	private static final long serialVersionUID = -5636083037254767651L;
+	private static final long serialVersionUID = -7684678442122765373L;
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String matricula;
@@ -52,17 +52,28 @@ public class AlunoDto extends Pessoa implements Serializable {
 		this.matricula = matricula;
 	}
 
-//	public AlunoDto(Aluno aluno) {
-//		this.codigo = aluno.getCodigo();
-//	}
+	public AlunoDto(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco, @NotEmpty(message = "Preencimento obrigatório") String matricula, @NotNull boolean pcd,
+			CategoriaPcd categoriaPcd) {
+		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
+		this.matricula = matricula;
+		this.pcd = pcd;
+		this.categoriaPcd = categoriaPcd;
+	}
 
 	public AlunoDto() {
 
 	}
 
 	@Override
-	public String toString() {
-		return "AlunoDto [matricula=" + matricula + ", pcd=" + pcd + ", categoriaPcd=" + categoriaPcd + "]";
+	public int hashCode() {
+		return Objects.hash(categoriaPcd, matricula, pcd);
 	}
+
+	@Override
+	public String toString() {
+		return "Aluno [matricula=" + matricula + ", pcd=" + pcd + ", categoriaPcd=" + categoriaPcd + "]";
+	}
+	
 
 }

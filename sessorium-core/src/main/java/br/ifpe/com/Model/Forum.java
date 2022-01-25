@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -15,6 +16,9 @@ public class Forum {
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String tema;
+	
+	@ManyToOne
+	private Turma turma;
 	
 	public Integer getCodigo() {
 		return codigo;

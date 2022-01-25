@@ -31,9 +31,6 @@ public class Turma {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
 
-	@NotNull
-	private int totalMeses;
-
 	@Enumerated(EnumType.STRING)
 	private Semestre semestre;
 
@@ -74,14 +71,6 @@ public class Turma {
 		this.ano = ano;
 	}
 
-	public int getTotalMeses() {
-		return totalMeses;
-	}
-
-	public void setTotalMeses(int totalMeses) {
-		this.totalMeses = totalMeses;
-	}
-
 	public Semestre getSemestre() {
 		return semestre;
 	}
@@ -111,12 +100,11 @@ public class Turma {
 	}
 
 	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate ano,
-			@NotNull int totalMeses, Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
+			Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.ano = ano;
-		this.totalMeses = totalMeses;
 		this.semestre = semestre;
 		this.turno = turno;
 		this.alunos = alunos;
