@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Endereco {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
@@ -70,14 +70,6 @@ public class Endereco {
 		this.cep = cep;
 	}
 
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getComplemento() {
 		return complemento;
 	}
@@ -86,6 +78,14 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+	
 	public Endereco(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String rua,
 			@NotEmpty(message = "Preencimento obrigatório") String numero,
 			@NotEmpty(message = "Preencimento obrigatório") String bairro,

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ import br.ifpe.com.Model.Boletim;
 import br.ifpe.com.Repository.BoletimRepository;
 import br.ifpe.com.Service.BoletimService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class BoletimResourse {
@@ -35,7 +34,7 @@ public class BoletimResourse {
 		return boletimRepository.findAll();
 	}
 
-	@RequestMapping(value = "/boletim/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/boletimId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Boletim> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Boletim> boletim = boletimRepository.findById(codigo);
 		if (boletim.isPresent())
@@ -44,7 +43,7 @@ public class BoletimResourse {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/boletim/{titulo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/boletimTitulo/{titulo}", method = RequestMethod.GET)
 	public ResponseEntity<Boletim> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
 		Optional<Boletim> boletim = boletimRepository.findByTitulo(titulo);
 		if (boletim.isPresent())

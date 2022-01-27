@@ -43,8 +43,6 @@ public class Escola {
 
 	@OneToMany
 	private List<Turma> turmas;
-	
-	private Integer totalUnidade;
 
 	public List<Turma> getTurmas() {
 		return turmas;
@@ -110,18 +108,10 @@ public class Escola {
 		Professores = professores;
 	}
 
-	public Integer getTotalUnidade() {
-		return totalUnidade;
-	}
-
-	public void setTotalUnidade(Integer totalUnidade) {
-		this.totalUnidade = totalUnidade;
-	}
-
 	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
 			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
 			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
-			List<Professor> professores, List<Turma> turmas, Integer totalUnidade) {
+			List<Professor> professores, List<Turma> turmas) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -131,9 +121,8 @@ public class Escola {
 		this.categoriaEscola = categoriaEscola;
 		Professores = professores;
 		this.turmas = turmas;
-		this.totalUnidade = totalUnidade;
 	}
-	
+
 	public Escola() {
 
 	}

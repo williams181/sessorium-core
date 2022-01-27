@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ import br.ifpe.com.Model.Coordenador;
 import br.ifpe.com.Repository.CoordenadorRepository;
 import br.ifpe.com.Service.CoordenadorService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class CoordenadorResourse {
@@ -30,12 +29,12 @@ public class CoordenadorResourse {
 	@Autowired
 	private CoordenadorRepository coordenadorRepository;
 
-	@RequestMapping(value = "/coordenador", method = RequestMethod.GET)
+	@RequestMapping(value = "/coordenadores", method = RequestMethod.GET)
 	public List<Coordenador> Get() {
 		return coordenadorRepository.findAll();
 	}
 
-	@RequestMapping(value = "/coordenador/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/coordenadorId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Coordenador> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Coordenador> coordenador = coordenadorRepository.findById(codigo);
 		if (coordenador.isPresent())
@@ -44,7 +43,7 @@ public class CoordenadorResourse {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/coordenador/{email}", method = RequestMethod.GET)
+	@RequestMapping(value = "/coordenadorEmail/{email}", method = RequestMethod.GET)
 	public ResponseEntity<Coordenador> GetByEmail(@PathVariable(value = "email") String email) {
 		Optional<Coordenador> coordenador = coordenadorRepository.findByEmail(email);
 		if (coordenador.isPresent())

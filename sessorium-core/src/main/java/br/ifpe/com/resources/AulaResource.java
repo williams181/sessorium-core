@@ -35,7 +35,7 @@ public class AulaResource {
 		return aulaRepository.findAll();
 	}
 
-	@RequestMapping(value = "/aula/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/aulaId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Aula> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Aula> aula = aulaRepository.findById(codigo);
 		if (aula.isPresent())
@@ -44,7 +44,7 @@ public class AulaResource {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/aula/{titulo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/aulaTitulo/{titulo}", method = RequestMethod.GET)
 	public ResponseEntity<Aula> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
 		Optional<Aula> aula = aulaRepository.findByTitulo(titulo);
 		if (aula.isPresent())

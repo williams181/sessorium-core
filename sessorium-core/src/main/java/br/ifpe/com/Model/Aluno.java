@@ -2,7 +2,6 @@ package br.ifpe.com.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -50,8 +49,11 @@ public class Aluno extends Pessoa implements Serializable {
 		this.matricula = matricula;
 	}
 
-	public Aluno(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
-			Endereco endereco, @NotEmpty(message = "Preencimento obrigatório") String matricula, @NotNull boolean pcd,
+	public Aluno(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+			@NotEmpty(message = "Preencimento obrigatório") String email,
+			@NotEmpty(message = "Preencimento obrigatório") String telefone,
+			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento, Endereco endereco,
+			@NotEmpty(message = "Preencimento obrigatório") String matricula, @NotNull boolean pcd,
 			CategoriaPcd categoriaPcd) {
 		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
 		this.matricula = matricula;
@@ -62,16 +64,5 @@ public class Aluno extends Pessoa implements Serializable {
 	public Aluno() {
 
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(categoriaPcd, matricula, pcd);
-	}
-
-	@Override
-	public String toString() {
-		return "Aluno [matricula=" + matricula + ", pcd=" + pcd + ", categoriaPcd=" + categoriaPcd + "]";
-	}
-	
 
 }

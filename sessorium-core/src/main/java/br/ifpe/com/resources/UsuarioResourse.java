@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ import br.ifpe.com.Model.Usuario;
 import br.ifpe.com.Repository.UsuarioRepository;
 import br.ifpe.com.Service.UsuarioService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class UsuarioResourse {
@@ -35,7 +34,7 @@ public class UsuarioResourse {
 		return usuarioRepository.findAll();
 	}
 
-	@RequestMapping(value = "/usuario/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarioId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Usuario> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Usuario> usuario = usuarioRepository.findById(codigo);
 		if (usuario.isPresent())
@@ -44,7 +43,7 @@ public class UsuarioResourse {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/usuario/{email}", method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarioEmail/{email}", method = RequestMethod.GET)
 	public ResponseEntity<Usuario> GetByEmail(@PathVariable(value = "email") String email) {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 		if (usuario.isPresent())

@@ -19,7 +19,7 @@ public class Coordenador extends Pessoa {
 
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String instituto;
-
+	
 	public Formacao getFormacao() {
 		return formacao;
 	}
@@ -44,9 +44,11 @@ public class Coordenador extends Pessoa {
 		this.curso = curso;
 	}
 
-	public Coordenador(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
-			Endereco endereco, Formacao formacao, Curso curso,
-			@NotEmpty(message = "Preencimento obrigatório") String instituto) {
+	public Coordenador(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+			@NotEmpty(message = "Preencimento obrigatório") String email,
+			@NotEmpty(message = "Preencimento obrigatório") String telefone,
+			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento, Endereco endereco,
+			Formacao formacao, Curso curso, @NotEmpty(message = "Preencimento obrigatório") String instituto) {
 		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
 		this.formacao = formacao;
 		this.curso = curso;

@@ -19,7 +19,7 @@ import br.ifpe.com.Model.Atividade;
 import br.ifpe.com.Repository.AtividadeRepository;
 import br.ifpe.com.Service.AtividadeService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AtividadeResourse {
@@ -35,7 +35,7 @@ public class AtividadeResourse {
 		return atividadeRepository.findAll();
 	}
 
-	@RequestMapping(value = "/atividade/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/atividadeId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Atividade> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Atividade> atividade = atividadeRepository.findById(codigo);
 		if (atividade.isPresent())
@@ -44,7 +44,7 @@ public class AtividadeResourse {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/atividade/{titulo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/atividadeTitulo/{titulo}", method = RequestMethod.GET)
 	public ResponseEntity<Atividade> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
 		Optional<Atividade> atividade = atividadeRepository.findByTitulo(titulo);
 		if (atividade.isPresent())

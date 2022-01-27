@@ -56,9 +56,12 @@ public class Professor extends Pessoa {
 		this.instituto = instituto;
 	}
 
-	public Professor(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
-			Endereco endereco, Curso curso, @NotEmpty(message = "Preencimento obrigatório") String instituto,
-			Formacao formacao, @NotNull int siape) {
+	public Professor(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
+			@NotEmpty(message = "Preencimento obrigatório") String email,
+			@NotEmpty(message = "Preencimento obrigatório") String telefone,
+			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento, Endereco endereco,
+			Curso curso, @NotEmpty(message = "Preencimento obrigatório") String instituto, Formacao formacao,
+			@NotNull int siape) {
 		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
 		this.curso = curso;
 		this.instituto = instituto;

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ import br.ifpe.com.Model.Comentario;
 import br.ifpe.com.Repository.ComentarioRepository;
 import br.ifpe.com.Service.ComentarioService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class ComentarioResourse {
@@ -35,7 +34,7 @@ public class ComentarioResourse {
 		return comentarioRepository.findAll();
 	}
 
-	@RequestMapping(value = "/comentario/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/comentarioId/{codigo}", method = RequestMethod.GET)
 	public ResponseEntity<Comentario> GetById(@PathVariable(value = "codigo") int codigo) {
 		Optional<Comentario> comentario = comentarioRepository.findById(codigo);
 		if (comentario.isPresent())
@@ -44,7 +43,7 @@ public class ComentarioResourse {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "/comentario/{titulo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/comentarioTitulo/{titulo}", method = RequestMethod.GET)
 	public ResponseEntity<Comentario> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
 		Optional<Comentario> comentario = comentarioRepository.findByTitulo(titulo);
 		if (comentario.isPresent())
