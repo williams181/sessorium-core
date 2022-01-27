@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.CoordenadorDao;
 import br.ifpe.com.Model.Coordenador;
+import br.ifpe.com.Repository.CoordenadorRepository;
 
 @Service
 public class CoordenadorService {
 
 	@Autowired
-	private CoordenadorDao daoCoordenador;
+	private CoordenadorRepository coordenadorRepository;
 
 	public void inserirCoordenador(Coordenador coordenador) {
-		daoCoordenador.save(coordenador);
+		coordenadorRepository.save(coordenador);
 	}
 	
 	public void removerCoordenador(Integer codigo) {
-		daoCoordenador.deleteById(codigo);
+		coordenadorRepository.deleteById(codigo);
 	}
 	
 	public List<Coordenador> listarCoordenadores(){
-		return daoCoordenador.findAll();
+		return coordenadorRepository.findAll();
 	}
 	public Coordenador buscarCoordenador(Integer codigo) {
-		return daoCoordenador.findById(codigo).get();
+		return coordenadorRepository.findById(codigo).get();
 	}
 
 }

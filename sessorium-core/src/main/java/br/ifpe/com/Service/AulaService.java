@@ -5,29 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.AulaDao;
 import br.ifpe.com.Model.Aula;
+import br.ifpe.com.Repository.AulaRepository;
 
 @Service
 public class AulaService {
 
 	@Autowired
-	private AulaDao daoAula;
+	private AulaRepository aulaRepository;
 
 	public void inserirAula(Aula aula) {
-		daoAula.save(aula);
+		aulaRepository.save(aula);
 	}
 
 	public void removerAula(Integer codigo) {
-		daoAula.deleteById(codigo);
+		aulaRepository.deleteById(codigo);
 	}
 
 	public List<Aula> listarAulas() {
-		return daoAula.findAll();
+		return aulaRepository.findAll();
 	}
 
 	public Aula buscarAula(Integer codigo) {
-		return daoAula.findById(codigo).get();
+		return aulaRepository.findById(codigo).get();
 	}
 
 }

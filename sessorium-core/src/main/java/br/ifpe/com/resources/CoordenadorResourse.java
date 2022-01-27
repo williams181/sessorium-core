@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Coordenador;
 import br.ifpe.com.Repository.CoordenadorRepository;
+import br.ifpe.com.Service.CoordenadorService;
 
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class CoordenadorResourse {
+	
+	@Autowired
+	private CoordenadorService coordenadorService;
 
 	@Autowired
 	private CoordenadorRepository coordenadorRepository;
@@ -37,9 +43,18 @@ public class CoordenadorResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value = "/coordenador/{email}", method = RequestMethod.GET)
+	public ResponseEntity<Coordenador> GetByEmail(@PathVariable(value = "email") String email) {
+		Optional<Coordenador> coordenador = coordenadorRepository.findByEmail(email);
+		if (coordenador.isPresent())
+			return new ResponseEntity<Coordenador>(coordenador.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/coordenador", method = RequestMethod.POST)
-	public Coordenador Post(@Valid @RequestBody Coordenador coordenador) {
+	public Coordenador Post(@Valid Coordenador coordenador) {
 		return coordenadorRepository.save(coordenador);
 	}
 

@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.ForumDao;
 import br.ifpe.com.Model.Forum;
+import br.ifpe.com.Repository.ForumRepository;
 @Service
 public class ForumService {
 	
 	@Autowired
-	private ForumDao daoForum;
+	private ForumRepository forumRepository;
 
 	public void inserirForum(Forum forum) {
-		daoForum.save(forum);
+		forumRepository.save(forum);
 	}
 
 	public void removerForum(Integer codigo) {
-		daoForum.deleteById(codigo);
+		forumRepository.deleteById(codigo);
 	}
 
 	public List<Forum> listarForums() {
-		return daoForum.findAll();
+		return forumRepository.findAll();
 	}
 
 	public Forum buscarForum(Integer codigo) {
-		return daoForum.findById(codigo).get();
+		return forumRepository.findById(codigo).get();
 	}
 
 }

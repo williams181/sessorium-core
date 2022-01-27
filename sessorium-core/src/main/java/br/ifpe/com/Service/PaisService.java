@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.PaisDao;
 import br.ifpe.com.Model.Pais;
+import br.ifpe.com.Repository.PaisRepository;
 
 @Service
 public class PaisService {
 
 	@Autowired
-	private PaisDao daoPais;
+	private PaisRepository paisRepository;
 
 	public void inserirPais(Pais pais) {
-		daoPais.save(pais);
+		paisRepository.save(pais);
 	}
 
 	public void removerPais(Integer codigo) {
-		daoPais.deleteById(codigo);
+		paisRepository.deleteById(codigo);
 	}
 
 	public List<Pais> listarPais() {
-		return daoPais.findAll();
+		return paisRepository.findAll();
 	}
 
 	public Pais buscarPais(Integer codigo) {
-		return daoPais.findById(codigo).get();
+		return paisRepository.findById(codigo).get();
 	}
 }

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Turma;
 import br.ifpe.com.Repository.TurmaRepository;
+import br.ifpe.com.Service.TurmaService;
 
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class TurmaResourse {
+	
+	@Autowired
+	private TurmaService turmaService;
 
 	@Autowired
 	private TurmaRepository turmaRepository;
 
-	@RequestMapping(value = "/turma", method = RequestMethod.GET)
+	@RequestMapping(value = "/turmas", method = RequestMethod.GET)
 	public List<Turma> Get() {
 		return turmaRepository.findAll();
 	}
@@ -37,9 +43,18 @@ public class TurmaResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value = "/turma/{titulo}", method = RequestMethod.GET)
+	public ResponseEntity<Turma> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
+		Optional<Turma> turma = turmaRepository.findByTitulo(titulo);
+		if (turma.isPresent())
+			return new ResponseEntity<Turma>(turma.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/turma", method = RequestMethod.POST)
-	public Turma Post(@Valid @RequestBody Turma turma) {
+	public Turma Post(@Valid Turma turma) {
 		return turmaRepository.save(turma);
 	}
 

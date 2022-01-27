@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.EscolaDao;
 import br.ifpe.com.Model.Escola;
+import br.ifpe.com.Repository.EscolaRepository;
 
 @Service
 public class EscolaService {
 
 	@Autowired
-	private EscolaDao daoEscola;
+	private EscolaRepository escolaRepository;
 
 	public void inserirEscola(Escola escola) {
-		daoEscola.save(escola);
+		escolaRepository.save(escola);
 	}
 
 	public void removerEscola(Integer codigo) {
-		daoEscola.deleteById(codigo);
+		escolaRepository.deleteById(codigo);
 	}
 
 	public List<Escola> listarEscolas() {
-		return daoEscola.findAll();
+		return escolaRepository.findAll();
 	}
 
 	public Escola buscarEscola(Integer codigo) {
-		return daoEscola.findById(codigo).get();
+		return escolaRepository.findById(codigo).get();
 	}
 }

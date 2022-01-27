@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Forum;
 import br.ifpe.com.Repository.ForumRepository;
+import br.ifpe.com.Service.ForumService;
 
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class ForumResourse {
 
 	@Autowired
+	private ForumService forumService;
+	
+	@Autowired
 	private ForumRepository forumRepository;
 
-	@RequestMapping(value = "/forum", method = RequestMethod.GET)
+	@RequestMapping(value = "/forums", method = RequestMethod.GET)
 	public List<Forum> Get() {
 		return forumRepository.findAll();
 	}
@@ -37,9 +43,18 @@ public class ForumResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value = "/forum/{tema}", method = RequestMethod.GET)
+	public ResponseEntity<Forum> GetByTema(@PathVariable(value = "tema") String tema) {
+		Optional<Forum> forum = forumRepository.findByTema(tema);
+		if (forum.isPresent())
+			return new ResponseEntity<Forum>(forum.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/forum", method = RequestMethod.POST)
-	public Forum Post(@Valid @RequestBody Forum forum) {
+	public Forum Post(@Valid Forum forum) {
 		return forumRepository.save(forum);
 	}
 

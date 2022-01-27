@@ -5,29 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.MateriaDao;
 import br.ifpe.com.Model.Materia;
+import br.ifpe.com.Repository.MateriaRepository;
 
 @Service
 public class MateriaService {
 
 	@Autowired
-	private MateriaDao daoMateria;
+	private MateriaRepository materiaRepository;
 
 	public void inserirMateria(Materia materia) {
-		daoMateria.save(materia);
+		materiaRepository.save(materia);
 	}
 
 	public void removerMateria(Integer codigo) {
-		daoMateria.deleteById(codigo);
+		materiaRepository.deleteById(codigo);
 	}
 
 	public List<Materia> listarMaterias() {
-		return daoMateria.findAll();
+		return materiaRepository.findAll();
 	}
 
 	public Materia buscarMateria(Integer codigo) {
-		return daoMateria.findById(codigo).get();
+		return materiaRepository.findById(codigo).get();
 	}
 
 }

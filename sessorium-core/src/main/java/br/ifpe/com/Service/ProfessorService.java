@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.ProfessorDao;
 import br.ifpe.com.Model.Professor;
+import br.ifpe.com.Repository.ProfessorRepository;
 
 @Service
 public class ProfessorService {
 
 	@Autowired
-	private ProfessorDao daoProfessor;
+	private ProfessorRepository professorRepository;
 
 	public void inserirProfessor(Professor professor) {
-		daoProfessor.save(professor);
+		professorRepository.save(professor);
 	}
 
 	public void removerProfessor(Integer codigo) {
-		daoProfessor.deleteById(codigo);
+		professorRepository.deleteById(codigo);
 	}
 
 	public List<Professor> listarProfessores() {
-		return daoProfessor.findAll();
+		return professorRepository.findAll();
 	}
 
 	public Professor buscarProfessor(Integer codigo) {
-		return daoProfessor.findById(codigo).get();
+		return professorRepository.findById(codigo).get();
 	}
 }

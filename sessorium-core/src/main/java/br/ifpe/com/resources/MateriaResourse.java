@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Materia;
 import br.ifpe.com.Repository.MateriaRepository;
+import br.ifpe.com.Service.MateriaService;
 
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class MateriaResourse {
+	
+	@Autowired
+	private MateriaService materiaService;
 
 	@Autowired
 	private MateriaRepository materiaRepository;
 
-	@RequestMapping(value = "/materia", method = RequestMethod.GET)
+	@RequestMapping(value = "/materias", method = RequestMethod.GET)
 	public List<Materia> Get() {
 		return materiaRepository.findAll();
 	}
@@ -37,9 +43,18 @@ public class MateriaResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value = "/materia/{titulo}", method = RequestMethod.GET)
+	public ResponseEntity<Materia> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
+		Optional<Materia> materia = materiaRepository.findByTitulo(titulo);
+		if (materia.isPresent())
+			return new ResponseEntity<Materia>(materia.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/materia", method = RequestMethod.POST)
-	public Materia Post(@Valid @RequestBody Materia materia) {
+	public Materia Post(@Valid Materia materia) {
 		return materiaRepository.save(materia);
 	}
 

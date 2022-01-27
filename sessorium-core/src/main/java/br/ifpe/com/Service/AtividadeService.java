@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.AtividadeDao;
 import br.ifpe.com.Model.Atividade;
+import br.ifpe.com.Repository.AtividadeRepository;
 
 @Service
 public class AtividadeService {
 
 	@Autowired
-	private AtividadeDao daoAtividade;
+	private AtividadeRepository atividadeRepository;
 
 	public void inserirAtividade(Atividade atividade) {
-		daoAtividade.save(atividade);
+		atividadeRepository.save(atividade);
 	}
 
 	public void removerAtividade(Integer codigo) {
-		daoAtividade.deleteById(codigo);
+		atividadeRepository.deleteById(codigo);
 	}
 
 	public List<Atividade> listarAtividades() {
-		return daoAtividade.findAll();
+		return atividadeRepository.findAll();
 	}
 
 	public Atividade buscarAtividade(Integer codigo) {
-		return daoAtividade.findById(codigo).get();
+		return atividadeRepository.findById(codigo).get();
 	}
 }

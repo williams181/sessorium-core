@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ifpe.com.Model.Aula;
 import br.ifpe.com.Repository.AulaRepository;
+import br.ifpe.com.Service.AulaService;
 
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AulaResource {
+	
+	@Autowired
+	private AulaService aulaService;
 
 	@Autowired
 	private AulaRepository aulaRepository;
 
-	@RequestMapping(value = "/aula", method = RequestMethod.GET)
+	@RequestMapping(value = "/aulas", method = RequestMethod.GET)
 	public List<Aula> Get() {
 		return aulaRepository.findAll();
 	}
@@ -37,9 +43,18 @@ public class AulaResource {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value = "/aula/{titulo}", method = RequestMethod.GET)
+	public ResponseEntity<Aula> GetByTitulo(@PathVariable(value = "titulo") String titulo) {
+		Optional<Aula> aula = aulaRepository.findByTitulo(titulo);
+		if (aula.isPresent())
+			return new ResponseEntity<Aula>(aula.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 	@RequestMapping(value = "/aula", method = RequestMethod.POST)
-	public Aula Post(@Valid @RequestBody Aula aula) {
+	public Aula Post(@Valid Aula aula) {
 		return aulaRepository.save(aula);
 	}
 

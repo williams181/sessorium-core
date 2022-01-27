@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.UsuarioDao;
 import br.ifpe.com.Model.Usuario;
+import br.ifpe.com.Repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
 	@Autowired
-	private UsuarioDao daoUsuario;
+	private UsuarioRepository usuarioRepository;
 
 	public void inserirUsuario(Usuario usuario) {
-		daoUsuario.save(usuario);
+		usuarioRepository.save(usuario);
 	}
 
 	public void removerUsuario(Integer codigo) {
-		daoUsuario.deleteById(codigo);
+		usuarioRepository.deleteById(codigo);
 	}
 
 	public List<Usuario> listarUsuarios() {
-		return daoUsuario.findAll();
+		return usuarioRepository.findAll();
 	}
 
 	public Usuario buscarUsuario(Integer codigo) {
-		return daoUsuario.findById(codigo).get();
+		return usuarioRepository.findById(codigo).get();
 	}
 
 }

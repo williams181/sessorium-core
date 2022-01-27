@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Dao.ComentarioDao;
 import br.ifpe.com.Model.Comentario;
+import br.ifpe.com.Repository.ComentarioRepository;
 
 @Service
 public class ComentarioService {
 
 	@Autowired
-	private ComentarioDao daoComentario;
+	private ComentarioRepository comentarioRepository;
 
 	public void inserirComentario(Comentario comentario) {
-		daoComentario.save(comentario);
+		comentarioRepository.save(comentario);
 	}
 
 	public void removerComentario(Integer codigo) {
-		daoComentario.deleteById(codigo);
+		comentarioRepository.deleteById(codigo);
 	}
 
 	public List<Comentario> listarComentarios() {
-		return daoComentario.findAll();
+		return comentarioRepository.findAll();
 	}
 
 	public Comentario buscarComentario(Integer codigo) {
-		return daoComentario.findById(codigo).get();
+		return comentarioRepository.findById(codigo).get();
 	}
 }
