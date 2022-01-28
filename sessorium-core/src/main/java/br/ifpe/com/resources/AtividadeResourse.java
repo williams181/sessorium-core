@@ -19,7 +19,7 @@ import br.ifpe.com.Model.Atividade;
 import br.ifpe.com.Repository.AtividadeRepository;
 import br.ifpe.com.Service.AtividadeService;
 
-//@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AtividadeResourse {

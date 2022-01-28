@@ -1,11 +1,15 @@
 package br.ifpe.com.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
+import br.ifpe.com.Enumeration.Cor;
 
 @Entity
 public class Materia {
@@ -20,8 +24,8 @@ public class Materia {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String conteudo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
-	private String cor;
+	@Enumerated(EnumType.STRING)
+	private Cor cor;
 
 	@ManyToOne
 	private Professor professor;
@@ -51,8 +55,7 @@ public class Materia {
 	}
 
 	public Materia(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo,
-			@NotEmpty(message = "Preencimento obrigatório") String conteudo,
-			@NotEmpty(message = "Preencimento obrigatório") String cor, Professor professor) {
+			@NotEmpty(message = "Preencimento obrigatório") String conteudo, Cor cor, Professor professor) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
@@ -61,11 +64,11 @@ public class Materia {
 		this.professor = professor;
 	}
 
-	public String getCor() {
+	public Cor getCor() {
 		return cor;
 	}
 
-	public void setCor(String cor) {
+	public void setCor(Cor cor) {
 		this.cor = cor;
 	}
 

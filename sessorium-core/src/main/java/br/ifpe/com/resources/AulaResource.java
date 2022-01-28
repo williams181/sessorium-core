@@ -19,7 +19,7 @@ import br.ifpe.com.Model.Aula;
 import br.ifpe.com.Repository.AulaRepository;
 import br.ifpe.com.Service.AulaService;
 
-@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AulaResource {
