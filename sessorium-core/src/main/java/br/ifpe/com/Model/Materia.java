@@ -1,11 +1,15 @@
 package br.ifpe.com.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
+import br.ifpe.com.Enumerated.Cor;
 
 @Entity
 public class Materia {
@@ -20,11 +24,11 @@ public class Materia {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String conteudo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
-	private String cor;
-
 	@ManyToOne
 	private Professor professor;
+	
+	@Enumerated(EnumType.STRING)
+	private Cor cor;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -50,24 +54,6 @@ public class Materia {
 		this.conteudo = conteudo;
 	}
 
-	public Materia(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo,
-			@NotEmpty(message = "Preencimento obrigatório") String conteudo,
-			@NotEmpty(message = "Preencimento obrigatório") String cor, Professor professor) {
-		super();
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.conteudo = conteudo;
-		this.cor = cor;
-		this.professor = professor;
-	}
-
-	public String getCor() {
-		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
 
 	public Professor getProfessor() {
 		return professor;
@@ -75,6 +61,24 @@ public class Materia {
 
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
+	}
+
+	public Cor getCor() {
+		return cor;
+	}
+
+	public void setCor(Cor cor) {
+		this.cor = cor;
+	}
+
+	public Materia(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo,
+			@NotEmpty(message = "Preencimento obrigatório") String conteudo, Professor professor, Cor cor) {
+		super();
+		this.codigo = codigo;
+		this.titulo = titulo;
+		this.conteudo = conteudo;
+		this.professor = professor;
+		this.cor = cor;
 	}
 
 	public Materia() {

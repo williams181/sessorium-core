@@ -55,7 +55,7 @@ public class AlunoResourse {
 
 	// foram retiradas as anotações @RequestBody logo apos o @valid
 	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
-	public Aluno Post(@Valid @RequestBody Aluno aluno) {
+	public Aluno Post(@Valid Aluno aluno) {
 		return alunoRepository.save(aluno);
 	}
 

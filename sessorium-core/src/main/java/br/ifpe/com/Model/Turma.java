@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import br.ifpe.com.Enumerated.Semestre;
+import br.ifpe.com.Enumerated.Turno;
 
 @Entity
 public class Turma {
@@ -25,11 +30,11 @@ public class Turma {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
 
-	@NotEmpty(message = "Preencimento obrigatório")
-	private String semestre;
-
-	@NotEmpty(message = "Preencimento obrigatório")
-	private String turno;
+	@Enumerated(EnumType.STRING)
+	private Semestre semestre;
+	
+	@Enumerated(EnumType.STRING)
+	private Turno turno;
 
 	@OneToMany
 	private List<Aluno> alunos;
@@ -65,22 +70,6 @@ public class Turma {
 		this.ano = ano;
 	}
 
-	public String getSemestre() {
-		return semestre;
-	}
-
-	public void setSemestre(String semestre) {
-		this.semestre = semestre;
-	}
-
-	public String getTurno() {
-		return turno;
-	}
-
-	public void setTurno(String turno) {
-		this.turno = turno;
-	}
-
 	public List<Materia> getMaterias() {
 		return materias;
 	}
@@ -93,10 +82,24 @@ public class Turma {
 		this.alunos = alunos;
 	}
 
+	public Semestre getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(Semestre semestre) {
+		this.semestre = semestre;
+	}
+
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
 
 	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate ano,
-			@NotEmpty(message = "Preencimento obrigatório") String semestre,
-			@NotEmpty(message = "Preencimento obrigatório") String turno, List<Aluno> alunos, List<Materia> materias) {
+			Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
