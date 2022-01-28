@@ -15,7 +15,7 @@ public class Aluno extends Pessoa {
 	@NotNull
 	private boolean pcd;
 
-	private String catetegoriaPcd;
+	private String categoriaPcd;
 
 	public boolean isPcd() {
 		return pcd;
@@ -30,19 +30,19 @@ public class Aluno extends Pessoa {
 			@NotEmpty(message = "Preencimento obrigatório") String telefone,
 			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento, Endereco endereco,
 			@NotEmpty(message = "Preencimento obrigatório") String matricula, @NotNull boolean pcd,
-			String catetegoriaPcd) {
+			String categoriaPcd) {
 		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
 		this.matricula = matricula;
 		this.pcd = pcd;
-		this.catetegoriaPcd = catetegoriaPcd;
+		this.categoriaPcd = categoriaPcd;
 	}
 
-	public String getCatetegoriaPcd() {
-		return catetegoriaPcd;
+	public String getCategoriaPcd() {
+		return categoriaPcd;
 	}
 
-	public void setCatetegoriaPcd(String catetegoriaPcd) {
-		this.catetegoriaPcd = catetegoriaPcd;
+	public void setCategoriaPcd(String categoriaPcd) {
+		this.categoriaPcd = categoriaPcd;
 	}
 
 	public String getMatricula() {
