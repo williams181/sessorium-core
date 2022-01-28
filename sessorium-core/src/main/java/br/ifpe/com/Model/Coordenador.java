@@ -11,8 +11,6 @@ public class Coordenador extends Pessoa {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String formacao;
 
-	private Curso curso;
-
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String instituto;
 	
@@ -24,22 +22,15 @@ public class Coordenador extends Pessoa {
 		this.instituto = instituto;
 	}
 
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
 
 	public Coordenador(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
 			@NotEmpty(message = "Preencimento obrigatório") String email,
 			@NotEmpty(message = "Preencimento obrigatório") String telefone,
-			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento, Endereco endereco,
-			String formacao, Curso curso, @NotEmpty(message = "Preencimento obrigatório") String instituto) {
-		super(codigo, nome, email, telefone, cpf, dataNascimento, endereco);
+			@NotEmpty(message = "Preencimento obrigatório") String cpf,
+			@NotEmpty(message = "Preencimento obrigatório") String formacao,
+			@NotEmpty(message = "Preencimento obrigatório") String instituto) {
+		super(codigo, nome, email, telefone, cpf);
 		this.formacao = formacao;
-		this.curso = curso;
 		this.instituto = instituto;
 	}
 
