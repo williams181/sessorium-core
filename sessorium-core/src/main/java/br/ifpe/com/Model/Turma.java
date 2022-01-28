@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +11,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import br.ifpe.com.Enumeration.Semestre;
-import br.ifpe.com.Enumeration.Turno;
 
 @Entity
 public class Turma {
@@ -30,11 +25,11 @@ public class Turma {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
 
-	@Enumerated(EnumType.STRING)
-	private Semestre semestre;
+	@NotEmpty(message = "Preencimento obrigatório")
+	private String semestre;
 
-	@Enumerated(EnumType.STRING)
-	private Turno turno;
+	@NotEmpty(message = "Preencimento obrigatório")
+	private String turno;
 
 	@OneToMany
 	private List<Aluno> alunos;
@@ -70,19 +65,19 @@ public class Turma {
 		this.ano = ano;
 	}
 
-	public Semestre getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre(Semestre semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 
-	public Turno getTurno() {
+	public String getTurno() {
 		return turno;
 	}
 
-	public void setTurno(Turno turno) {
+	public void setTurno(String turno) {
 		this.turno = turno;
 	}
 
@@ -98,8 +93,10 @@ public class Turma {
 		this.alunos = alunos;
 	}
 
+
 	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate ano,
-			Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
+			@NotEmpty(message = "Preencimento obrigatório") String semestre,
+			@NotEmpty(message = "Preencimento obrigatório") String turno, List<Aluno> alunos, List<Materia> materias) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;

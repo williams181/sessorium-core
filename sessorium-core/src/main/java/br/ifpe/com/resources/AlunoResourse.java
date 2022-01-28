@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,7 +55,7 @@ public class AlunoResourse {
 
 	// foram retiradas as anotações @RequestBody logo apos o @valid
 	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
-	public Aluno Post(@Valid Aluno aluno) {
+	public Aluno Post(@Valid @RequestBody Aluno aluno) {
 		return alunoRepository.save(aluno);
 	}
 

@@ -2,10 +2,7 @@ package br.ifpe.com.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import br.ifpe.com.Enumeration.UF;
+import javax.validation.constraints.NotEmpty;
 
 @Embeddable
 public class Cidade {
@@ -13,8 +10,8 @@ public class Cidade {
 	@Column(name = "cidade")
 	private String nome;
 
-	@Enumerated(EnumType.STRING)
-	private UF uf;
+	@NotEmpty(message = "Preencimento obrigatório")
+	private String uf; 
 
 	public String getNome() {
 		return nome;
@@ -24,15 +21,15 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	public UF getUf() {
+	public String getUf() {
 		return uf;
 	}
 
-	public void setUf(UF uf) {
+	public void setUf(String uf) {
 		this.uf = uf;
 	}
 
-	public Cidade(String nome, UF uf) {
+	public Cidade(String nome, @NotEmpty(message = "Preencimento obrigatório") String uf) {
 		super();
 		this.nome = nome;
 		this.uf = uf;

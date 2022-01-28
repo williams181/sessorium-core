@@ -3,8 +3,6 @@ package br.ifpe.com.Model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-
-import br.ifpe.com.Enumeration.CategoriaEscola;
 
 @Entity
 public class Escola {
@@ -35,8 +31,8 @@ public class Escola {
 	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
 
-	@Enumerated(EnumType.STRING)
-	private CategoriaEscola categoriaEscola;
+	@NotEmpty(message = "Preencimento obrigatório")
+	private String categoriaEscola; 
 
 	@OneToMany
 	private List<Professor> Professores;
@@ -76,11 +72,11 @@ public class Escola {
 		this.endereco = endereco;
 	}
 
-	public CategoriaEscola getCategoriaEscola() {
+	public String getCategoriaEscola() {
 		return categoriaEscola;
 	}
 
-	public void setCategoriaEscola(CategoriaEscola categoriaEscola) {
+	public void setCategoriaEscola(String categoriaEscola) {
 		this.categoriaEscola = categoriaEscola;
 	}
 
@@ -110,8 +106,9 @@ public class Escola {
 
 	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
 			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
-			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
-			List<Professor> professores, List<Turma> turmas) {
+			@NotEmpty(message = "Preencimento obrigatório") String telefone,
+			@NotEmpty(message = "Preencimento obrigatório") String categoriaEscola, List<Professor> professores,
+			List<Turma> turmas) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
