@@ -6,13 +6,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotEmpty;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import br.ifpe.com.Enumerated.Semestre;
 import br.ifpe.com.Enumerated.Turno;
@@ -21,13 +16,10 @@ import br.ifpe.com.Enumerated.Turno;
 public class Turma {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String titulo;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ano;
 
 	@Enumerated(EnumType.STRING)
@@ -96,18 +88,6 @@ public class Turma {
 
 	public void setTurno(Turno turno) {
 		this.turno = turno;
-	}
-
-	public Turma(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String titulo, LocalDate ano,
-			Semestre semestre, Turno turno, List<Aluno> alunos, List<Materia> materias) {
-		super();
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.ano = ano;
-		this.semestre = semestre;
-		this.turno = turno;
-		this.alunos = alunos;
-		this.materias = materias;
 	}
 
 	public Turma() {

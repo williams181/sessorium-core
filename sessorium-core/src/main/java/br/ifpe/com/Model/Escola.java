@@ -2,16 +2,15 @@ package br.ifpe.com.Model;
 
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
 
 import br.ifpe.com.Enumerated.CategoriaEscola;
 
@@ -19,27 +18,25 @@ import br.ifpe.com.Enumerated.CategoriaEscola;
 public class Escola {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String cnpj;
 
-	@OneToOne
-	@JoinColumn(name = "endereco_id")
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "rua", column = @Column(name = "rua")),
+			@AttributeOverride(name = "complemento", column = @Column(name = "complemento")),
+			@AttributeOverride(name = "numero", column = @Column(name = "numero")),
+			@AttributeOverride(name = "cidade", column = @Column(name = "cidade")),
+			@AttributeOverride(name = "cep", column = @Column(name = "cep")),
+			@AttributeOverride(name = "bairro", column = @Column(name = "bairro")) })
 	private Endereco endereco;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
 
 	@Enumerated(EnumType.STRING)
 	private CategoriaEscola categoriaEscola;
-	
-	@OneToOne
-	private Endereco endereo;
 
 	@OneToMany
 	private List<Professor> Professores;
@@ -111,18 +108,8 @@ public class Escola {
 		this.categoriaEscola = categoriaEscola;
 	}
 
-	public Endereco getEndereo() {
-		return endereo;
-	}
-
-	public void setEndereo(Endereco endereo) {
-		this.endereo = endereo;
-	}
-	
-	public Escola(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
-			@NotEmpty(message = "Preencimento obrigatório") String cnpj, Endereco endereco,
-			@NotEmpty(message = "Preencimento obrigatório") String telefone, CategoriaEscola categoriaEscola,
-			Endereco endereo, List<Professor> professores, List<Turma> turmas) {
+	public Escola(Integer codigo, String nome, String cnpj, Endereco endereco, String telefone,
+			CategoriaEscola categoriaEscola, List<Professor> professores, List<Turma> turmas) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -130,7 +117,6 @@ public class Escola {
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.categoriaEscola = categoriaEscola;
-		this.endereo = endereo;
 		Professores = professores;
 		this.turmas = turmas;
 	}

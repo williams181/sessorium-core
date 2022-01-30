@@ -19,7 +19,7 @@ import br.ifpe.com.Model.Turma;
 import br.ifpe.com.Repository.TurmaRepository;
 import br.ifpe.com.Service.TurmaService;
 
-@CrossOrigin(origins = {"http://localhost:19006"})
+//@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class TurmaResourse {
@@ -54,7 +54,7 @@ public class TurmaResourse {
 	}
 
 	@RequestMapping(value = "/turma", method = RequestMethod.POST)
-	public Turma Post(@Valid Turma turma) {
+	public Turma Post(@Valid @RequestBody Turma turma) {
 		return turmaRepository.save(turma);
 	}
 

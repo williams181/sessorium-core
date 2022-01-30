@@ -54,7 +54,7 @@ public class BoletimResourse {
 	}
 
 	@RequestMapping(value = "/boletim", method = RequestMethod.POST)
-	public Boletim Post(@Valid Boletim boletim) {
+	public Boletim Post(@Valid @RequestBody Boletim boletim) {
 		return boletimRepository.save(boletim);
 	}
 

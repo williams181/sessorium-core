@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ import br.ifpe.com.Model.Aula;
 import br.ifpe.com.Repository.AulaRepository;
 import br.ifpe.com.Service.AulaService;
 
-@CrossOrigin(origins = {"http://localhost:19006"})
+//@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AulaResource {
@@ -54,7 +53,7 @@ public class AulaResource {
 	}
 
 	@RequestMapping(value = "/aula", method = RequestMethod.POST)
-	public Aula Post(@Valid Aula aula) {
+	public Aula Post(@Valid @RequestBody Aula aula) {
 		return aulaRepository.save(aula);
 	}
 

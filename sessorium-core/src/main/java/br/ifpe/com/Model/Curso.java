@@ -2,7 +2,6 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,21 +9,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Embeddable
 public class Curso {
 
-	@Column(name = "curso")
-	private String nome;
+	private String cursoNome;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataInicio;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataConclusao;
-
-	public String getNome() {
-		return nome;
+	private LocalDate dataConclusao;	
+	
+	public String getCursoNome() {
+		return cursoNome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCursoNome(String cursoNome) {
+		this.cursoNome = cursoNome;
 	}
 
 	public LocalDate getDataInicio() {
@@ -43,9 +41,11 @@ public class Curso {
 		this.dataConclusao = dataConclusao;
 	}
 
-	public Curso(String nome, LocalDate dataInicio, LocalDate dataConclusao) {
+
+
+	public Curso(String cursoNome, LocalDate dataInicio, LocalDate dataConclusao) {
 		super();
-		this.nome = nome;
+		this.cursoNome = cursoNome;
 		this.dataInicio = dataInicio;
 		this.dataConclusao = dataConclusao;
 	}

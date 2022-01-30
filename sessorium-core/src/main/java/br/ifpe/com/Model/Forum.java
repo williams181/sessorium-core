@@ -1,20 +1,15 @@
 package br.ifpe.com.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Forum {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String tema;
 	
 	@ManyToOne
@@ -36,10 +31,13 @@ public class Forum {
 		this.tema = tema;
 	}
 
-	public Forum(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String tema) {
+	
+	
+	public Forum(Integer codigo, String tema, Turma turma) {
 		super();
 		this.codigo = codigo;
 		this.tema = tema;
+		this.turma = turma;
 	}
 
 	public Forum() {

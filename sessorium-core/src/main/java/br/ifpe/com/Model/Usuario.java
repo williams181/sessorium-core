@@ -2,35 +2,50 @@ package br.ifpe.com.Model;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Usuario {
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String nome;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String email;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String telefone;
 
-	@NotEmpty(message = "Preencimento obrigatório")
 	private String cpf;
-
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
+
+	@Embedded
+	@AttributeOverrides({
+	@AttributeOverride( name = "rua", column = @Column(name = "rua")),
+	@AttributeOverride( name = "complemento", column = @Column(name = "complemento")),
+	@AttributeOverride( name = "numero", column = @Column(name = "numero")),
+	@AttributeOverride( name = "cidade", column = @Column(name = "cidade")),
+	@AttributeOverride( name = "cep", column = @Column(name = "cep")),
+	@AttributeOverride( name = "bairro", column = @Column(name = "bairro"))
+	})
+	private Endereco endereco;
+	
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getNome() {
 		return nome;
@@ -72,18 +87,16 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
-	public Usuario(Integer codigo, @NotEmpty(message = "Preencimento obrigatório") String nome,
-			@NotEmpty(message = "Preencimento obrigatório") String email,
-			@NotEmpty(message = "Preencimento obrigatório") String telefone,
-			@NotEmpty(message = "Preencimento obrigatório") String cpf, LocalDate dataNascimento) {
+	public Usuario(Integer codigo, String nome, String email, String telefone, String cpf, LocalDate dataNascimento,
+			Endereco endereco) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -91,6 +104,7 @@ public class Usuario {
 		this.telefone = telefone;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
+		this.endereco = endereco;
 	}
 
 	public Usuario() {

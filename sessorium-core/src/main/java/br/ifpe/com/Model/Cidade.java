@@ -1,6 +1,5 @@
 package br.ifpe.com.Model;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,33 +9,44 @@ import br.ifpe.com.Enumerated.UF;
 @Embeddable
 public class Cidade {
 
-	@Column(name = "cidade")
-	private String nome;
+	private String municipio;
 
 	@Enumerated(EnumType.STRING)
 	private UF uf;
+	
+	
 
-	public String getNome() {
-		return nome;
+	public String getMunicipio() {
+		return municipio;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+
+
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
 	}
+
+
 
 	public UF getUf() {
 		return uf;
 	}
 
+
+
 	public void setUf(UF uf) {
 		this.uf = uf;
 	}
 
-	public Cidade(String nome, UF uf) {
+
+
+	public Cidade(String municipio, UF uf) {
 		super();
-		this.nome = nome;
+		this.municipio = municipio;
 		this.uf = uf;
 	}
+
+
 
 	public Cidade() {
 
