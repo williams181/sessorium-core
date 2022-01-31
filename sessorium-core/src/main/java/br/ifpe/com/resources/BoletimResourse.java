@@ -52,9 +52,9 @@ public class BoletimResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	//@Valid @RequestBody 
 	@RequestMapping(value = "/boletim", method = RequestMethod.POST)
-	public Boletim Post(@Valid @RequestBody Boletim boletim) {
+	public Boletim Post(Boletim boletim) {
 		return boletimRepository.save(boletim);
 	}
 

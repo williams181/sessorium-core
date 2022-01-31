@@ -21,7 +21,7 @@ public class MateriaController {
 	private List<Materia> materias = new ArrayList<>();
 
 	@GetMapping("/exibirMateria")
-	public String exibirPaginaMateria(Materia materia) {
+	public String exibirMateria(Materia materia) {
 		return "pagina-materia";
 	}
 
@@ -29,29 +29,24 @@ public class MateriaController {
 	public String exibirAlterarMateria(Materia materia, Integer codigo, Model model) {
 		Materia cont = this.materiaService.buscarMateria(codigo);
 		model.addAttribute("materia", cont);
-		this.materias.remove(materia);
-		this.materias.add(materia);
 		this.materiaService.removerMateria(codigo);
 		this.materiaService.inserirMateria(materia);
 		return "materia-alterar";
 	}
 
 	@GetMapping("/exibirFormMateria")
-	public String exibirForm(Materia materia) {
+	public String exibirFormMateria(Materia materia) {
 		return "materia-form";
 	}
 
 	@GetMapping("/excluirMateria")
 	public String excluirMateria(Materia materia, Integer codigo) {
-		this.materias.remove(materia);
 		this.materiaService.removerMateria(codigo);
 		return "materia-list";
 	}
 
 	@PostMapping("/salvarMateria")
 	public String salvarMateria(Materia materia) {
-		this.materias.remove(materia);
-		this.materias.add(materia);
 		this.materiaService.inserirMateria(materia);
 		System.out.println(materia);
 		return "redirect:/listarMaterias";

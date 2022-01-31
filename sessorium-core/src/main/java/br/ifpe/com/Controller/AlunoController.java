@@ -23,12 +23,12 @@ public class AlunoController {
 	private List<Aluno> alunos = new ArrayList<>();
 
 	@GetMapping("/exibirAluno")
-	public String exibirPaginaAluno(Aluno aluno) {
+	public String exibirAluno(Aluno aluno) {
 		return "aluno/pagina-aluno";
 	}
 
 	@ModelAttribute("enum_categoriaPcd")
-	public CategoriaPcd[] getEnumCategoriaPcd() {
+	public CategoriaPcd[] enum_categoriaPcd() {
 		return CategoriaPcd.values();
 	}
 
@@ -36,30 +36,25 @@ public class AlunoController {
 	public String exibirAlterarAluno(Aluno aluno, Integer codigo, Model model) {
 		Aluno cont = this.alunoService.buscarAluno(codigo);
 		model.addAttribute("aluno", cont);
-		this.alunos.remove(aluno);
-		this.alunos.add(aluno);
 		this.alunoService.removerAluno(codigo);
-//		this.alunoService.inserirAluno(aluno);
+		this.alunoService.inserirAluno(aluno);
 		return "aluno/aluno-alterar";
 	}
 
 	@GetMapping("/exibirFormAluno")
-	public String exibirForm(Aluno aluno) {
+	public String exibirFormAluno(Aluno aluno) {
 		return "aluno/aluno-form";
 	}
 
 	@GetMapping("/excluirAluno")
 	public String excluirAluno(Aluno aluno, Integer codigo) {
-		this.alunos.remove(aluno);
 		this.alunoService.removerAluno(codigo);
 		return "aluno/aluno-list";
 	}
 
 	@PostMapping("/salvarAluno")
 	public String salvarAluno(Aluno aluno) {
-		this.alunos.remove(aluno);
-		this.alunos.add(aluno);
-//		this.alunoService.inserirAluno(aluno);
+		this.alunoService.inserirAluno(aluno);
 		System.out.println(aluno);
 		return "redirect:/listarAlunos";
 	}

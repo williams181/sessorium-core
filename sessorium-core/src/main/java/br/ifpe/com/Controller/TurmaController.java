@@ -21,7 +21,7 @@ public class TurmaController {
 	private List<Turma> turmas = new ArrayList<>();
 
 	@GetMapping("/exibirTurma")
-	public String exibirPaginaTurma(Turma turma) {
+	public String exibirTurma(Turma turma) {
 		return "pagina-turma";
 	}
 
@@ -29,29 +29,24 @@ public class TurmaController {
 	public String exibirAlterarTruma(Turma turma, Integer codigo, Model model) {
 		Turma cont = this.turmaService.buscarTurma(codigo);
 		model.addAttribute("turma", cont);
-		this.turmas.remove(turma);
-		this.turmas.add(turma);
 		this.turmaService.removerTurma(codigo);
 		this.turmaService.inserirTurma(turma);
 		return "turma-alterar";
 	}
 
 	@GetMapping("/exibirFormTurma")
-	public String exibirForm(Turma turma) {
+	public String exibirFormTurma(Turma turma) {
 		return "turma-form";
 	}
 
 	@GetMapping("/excluirTurma")
 	public String excluirTurma(Turma turma, Integer codigo) {
-		this.turmas.remove(turma);
 		this.turmaService.removerTurma(codigo);
 		return "turma-list";
 	}
 
 	@PostMapping("/salvarTurma")
 	public String salvarTurma(Turma turma) {
-		this.turmas.remove(turma);
-		this.turmas.add(turma);
 		this.turmaService.inserirTurma(turma);
 		System.out.println(turma);
 		return "redirect:/listarTurmas";

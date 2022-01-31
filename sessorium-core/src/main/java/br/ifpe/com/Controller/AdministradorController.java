@@ -21,7 +21,7 @@ public class AdministradorController {
 	private List<Administrador> administradores = new ArrayList<>();
 
 	@GetMapping("/exibirAdministrador")
-	public String exibirPaginaAdministrador(Administrador administrador) {
+	public String exibirAdministrador(Administrador administrador) {
 		return "administrador/pagina-Administrador";
 	}
 
@@ -29,15 +29,13 @@ public class AdministradorController {
 	public String exibirAlterarAdministrador(Administrador administrador, Integer codigo, Model model) {
 		Administrador cont = this.administradorService.buscarAdministrador(codigo);
 		model.addAttribute("administrador", cont);
-		this.administradores.remove(administrador);
-		this.administradores.add(administrador);
 		this.administradorService.removerAdministrador(codigo);
 		this.administradorService.inserirAdministrador(administrador);
 		return "administrador/administrador-alterar";
 	}
 
 	@GetMapping("/exibirFormAdministrador")
-	public String exibirForm(Administrador administrador) {
+	public String exibirFormAdministrador(Administrador administrador) {
 		return "administrador/administrador-form";
 	}
 
@@ -58,7 +56,7 @@ public class AdministradorController {
 	}
 
 	@GetMapping("/listarAdministradores")
-	public String listarAdministrador(Model model) {
+	public String listarAdministradores(Model model) {
 		model.addAttribute("listarAdministrador", administradores);
 		return "administrador/administrador-list";
 	}

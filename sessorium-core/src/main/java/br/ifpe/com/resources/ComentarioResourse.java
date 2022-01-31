@@ -8,6 +8,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ import br.ifpe.com.Model.Comentario;
 import br.ifpe.com.Repository.ComentarioRepository;
 import br.ifpe.com.Service.ComentarioService;
 
-//@CrossOrigin(origins = {"http://localhost:19006"})	
+@CrossOrigin(origins = {"http://localhost:19006"})	
 @RestController
 @RequestMapping(value = "/sessorium")
 public class ComentarioResourse {
@@ -51,9 +53,9 @@ public class ComentarioResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	//@Valid @RequestBody 
 	@RequestMapping(value = "/comentario", method = RequestMethod.POST)
-	public Comentario Post(@Valid @RequestBody Comentario comentario) {
+	public Comentario Post(Comentario comentario) {
 		return comentarioRepository.save(comentario);
 	}
 

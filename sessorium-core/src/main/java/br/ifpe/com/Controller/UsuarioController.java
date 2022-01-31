@@ -20,7 +20,7 @@ public class UsuarioController {
 	private List<Usuario> usuarios = new ArrayList<>();
 
 	@GetMapping("/exibirUsuario")
-	public String exibirPaginaUsuario(Usuario usuario) {
+	public String exibirUsuario(Usuario usuario) {
 		return "usuario-aluno";
 	}
 
@@ -28,29 +28,24 @@ public class UsuarioController {
 	public String exibirAlterarUsuario(Usuario usuario, Integer codigo, Model model) {
 		Usuario cont = this.usuarioService.buscarUsuario(codigo);
 		model.addAttribute("usuario", cont);
-		this.usuarios.remove(usuario);
-		this.usuarios.add(usuario);
 		this.usuarioService.removerUsuario(codigo);
 		this.usuarioService.inserirUsuario(usuario);
 		return "usuario-alterar";
 	}
 
 	@GetMapping("/exibirFormUsuario")
-	public String exibirForm(Usuario usuario) {
+	public String exibirFormUsuario(Usuario usuario) {
 		return "usuario-form";
 	}
 
 	@GetMapping("/excluirUsuario")
 	public String excluirUsuario(Usuario usuario, Integer codigo) {
-		this.usuarios.remove(usuario);
 		this.usuarioService.removerUsuario(codigo);
 		return "usuario-list";
 	}
 
 	@PostMapping("/salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
-		this.usuarios.remove(usuario);
-		this.usuarios.add(usuario);
 		this.usuarioService.inserirUsuario(usuario);
 		System.out.println(usuario);
 		return "redirect:/listarUsuarios";

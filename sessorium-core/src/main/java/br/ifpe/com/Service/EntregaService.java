@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ifpe.com.Model.Atividade;
 import br.ifpe.com.Model.Entrega;
 import br.ifpe.com.Repository.EntregaRepository;
 

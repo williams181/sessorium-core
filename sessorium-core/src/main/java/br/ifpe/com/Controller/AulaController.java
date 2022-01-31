@@ -21,7 +21,7 @@ public class AulaController {
 	private List<Aula> aulas = new ArrayList<>();
 
 	@GetMapping("/exibirAula")
-	public String exibirPaginaAula(Aula aula) {
+	public String exibirAula(Aula aula) {
 		return "aula/pagina-aula";
 	}
 
@@ -29,29 +29,24 @@ public class AulaController {
 	public String exibirAlterarAula(Aula aula, Integer codigo, Model model) {
 		Aula cont = this.aulaService.buscarAula(codigo);
 		model.addAttribute("aula", cont);
-		this.aulas.remove(aula);
-		this.aulas.add(aula);
 		this.aulaService.removerAula(codigo);
 		this.aulaService.inserirAula(aula);
 		return "aula/aula-alterar";
 	}
 
 	@GetMapping("/exibirFormAula")
-	public String exibirForm(Aula aula) {
+	public String exibirFormAula(Aula aula) {
 		return "aula/aula-form";
 	}
 
 	@GetMapping("/excluirAula")
 	public String excluirAula(Aula aula, Integer codigo) {
-		this.aulas.remove(aula);
 		this.aulaService.removerAula(codigo);
 		return "aula/aula-list";
 	}
 
 	@PostMapping("/salvarAula")
 	public String salvarAula(Aula aula) {
-		this.aulas.remove(aula);
-		this.aulas.add(aula);
 		this.aulaService.inserirAula(aula);
 		System.out.println(aula);
 		return "redirect:/listarAulas";

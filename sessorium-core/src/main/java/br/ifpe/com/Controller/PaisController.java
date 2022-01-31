@@ -20,7 +20,7 @@ public class PaisController {
 	private List<Pais> pais = new ArrayList<>();
 
 	@GetMapping("/exibirPais")
-	public String exibirPaginaPais(Pais pais) {
+	public String exibirPais(Pais pais) {
 		return "pagina-pais";
 	}
 
@@ -28,29 +28,24 @@ public class PaisController {
 	public String exibirAlterarPais(Pais pais, Integer codigo, Model model) {
 		Pais cont = this.paisService.buscarPais(codigo);
 		model.addAttribute("pais", cont);
-		this.pais.remove(pais);
-		this.pais.add(pais);
 		this.paisService.removerPais(codigo);
 		this.paisService.inserirPais(pais);
 		return "pais-alterar";
 	}
 
 	@GetMapping("/exibirFormPais")
-	public String exibirForm(Pais pais) {
+	public String exibirFormPais(Pais pais) {
 		return "pais-form";
 	}
 
 	@GetMapping("/excluirPais")
 	public String excluirPais(Pais pais, Integer codigo) {
-		this.pais.remove(pais);
 		this.paisService.removerPais(codigo);
 		return "aluno-list";
 	}
 
 	@PostMapping("/salvarPais")
 	public String salvarPais(Pais pais) {
-		this.pais.remove(pais);
-		this.pais.add(pais);
 		this.paisService.inserirPais(pais);
 		System.out.println(pais);
 		return "redirect:/listarPais";

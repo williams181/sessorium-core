@@ -21,7 +21,7 @@ public class AtividadeController {
 	private List<Atividade> atividades = new ArrayList<>();
 
 	@GetMapping("/exibirAtividade")
-	public String exibirPaginaAtividade(Atividade atividade) {
+	public String exibirAtividade(Atividade atividade) {
 		return "atividade/pagina-atividade";
 	}
 
@@ -29,29 +29,24 @@ public class AtividadeController {
 	public String exibirAlterarAtividade(Atividade atividade, Integer codigo, Model model) {
 		Atividade cont = this.atividadeService.buscarAtividade(codigo);
 		model.addAttribute("atividade", cont);
-		this.atividades.remove(atividade);
-		this.atividades.add(atividade);
 		this.atividadeService.removerAtividade(codigo);
 		this.atividadeService.inserirAtividade(atividade);
 		return "atividade/atividade-alterar";
 	}
 
 	@GetMapping("/exibirFormAtividade")
-	public String exibirForm(Atividade atividade) {
+	public String exibirFormAtividade(Atividade atividade) {
 		return "atividade/atividade-form";
 	}
 
 	@GetMapping("/excluirAtividade")
 	public String excluirAluno(Atividade atividade, Integer codigo) {
-		this.atividades.remove(atividade);
 		this.atividadeService.removerAtividade(codigo);
 		return "atividade/atividade-list";
 	}
 
 	@PostMapping("/salvarAtividade")
 	public String salvarAtividade(Atividade atividade) {
-		this.atividades.remove(atividade);
-		this.atividades.add(atividade);
 		this.atividadeService.inserirAtividade(atividade);
 		System.out.println(atividade);
 		return "redirect:/listarAtividades";

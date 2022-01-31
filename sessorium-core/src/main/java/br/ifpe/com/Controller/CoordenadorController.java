@@ -28,12 +28,12 @@ public class CoordenadorController {
 	}
 
 	@GetMapping("/exibirCoordenador")
-	public String exibirPaginaCoordenador(Coordenador coordenador) {
+	public String exibirCoordenador(Coordenador coordenador) {
 		return "coordenador/pagina-coordenador";
 	}
 	
 	@ModelAttribute("enum_formacao")
-	public Formacao[] getEnumFormacao() {
+	public Formacao[] enum_formacao() {
 		return Formacao.values();
 	}
 	
@@ -49,21 +49,18 @@ public class CoordenadorController {
 	}
 	
 	@GetMapping("/exibirFormCoordenador")
-	public String exibirForm(Coordenador coordenador) {
+	public String exibirFormCoordenador(Coordenador coordenador) {
 		return "coordenador/coordenador-form";
 	}
 	
 	@GetMapping("/excluirCoordenador")
 	public String excluirCoordenador(Coordenador coordenador, Integer codigo) {
-		this.coordenadores.remove(coordenador);
 		this.coordenadorService.removerCoordenador(codigo);
 		return "coordenador/coordenador-list";
 	}
 
 	@PostMapping("/salvarCoordenador")
 	public String salvarCoordenador(Coordenador coordenador) {
-		this.coordenadores.remove(coordenador);
-		this.coordenadores.add(coordenador);
 		this.coordenadorService.inserirCoordenador(coordenador);
 		System.out.println(coordenador);
 		return "redirect:/listarCoordenadores";

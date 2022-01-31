@@ -20,7 +20,7 @@ public class ForumController {
 	private List<Forum> forums = new ArrayList<>();
 
 	@GetMapping("/exibirForum")
-	public String exibirPaginaForum(Forum forum) {
+	public String exibirForum(Forum forum) {
 		return "pagina-forum";
 	}
 
@@ -28,36 +28,31 @@ public class ForumController {
 	public String exibirAlterarForum(Forum forum, Integer codigo, Model model) {
 		Forum cont = this.forumService.buscarForum(codigo);
 		model.addAttribute("pais", cont);
-		this.forums.remove(forum);
-		this.forums.add(forum);
 		this.forumService.removerForum(codigo);
 		this.forumService.inserirForum(forum);
 		return "forum-alterar";
 	}
 
 	@GetMapping("/exibirFormForum")
-	public String exibirForum(Forum forum) {
+	public String exibirFormForum(Forum forum) {
 		return "forum-form";
 	}
 
 	@GetMapping("/excluirForum")
 	public String excluirForum(Forum forum, Integer codigo) {
-		this.forums.remove(forum);
 		this.forumService.removerForum(codigo);
 		return "forum-list";
 	}
 
 	@PostMapping("/salvarForum")
-	public String salvarPais(Forum forum) {
-		this.forums.remove(forum);
-		this.forums.add(forum);
+	public String salvarForum(Forum forum) {
 		this.forumService.inserirForum(forum);
 		System.out.println(forum);
 		return "redirect:/listarForums";
 	}
 
-	@GetMapping("/listarForum")
-	public String listarForum(Model model) {
+	@GetMapping("/listarForums")
+	public String listarForums(Model model) {
 		model.addAttribute("listarForum", forums);
 		return "forum-list";
 	}

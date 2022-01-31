@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import br.ifpe.com.Model.Pais;
 import br.ifpe.com.Repository.PaisRepository;
 import br.ifpe.com.Service.PaisService;
 
-//@CrossOrigin(origins = {"http://localhost:19006"})
+@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class PaisResourse {
@@ -51,9 +52,9 @@ public class PaisResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	//@Valid @RequestBody
 	@RequestMapping(value = "/pais", method = RequestMethod.POST)
-	public Pais Post(@Valid @RequestBody Pais pais) {
+	public Pais Post(Pais pais) {
 		return paisRepository.save(pais);
 	}
 

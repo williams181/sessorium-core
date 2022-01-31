@@ -21,7 +21,7 @@ public class ComentarioController {
 	private List<Comentario> comentarios = new ArrayList<>();
 
 	@GetMapping("/exibirComentario")
-	public String exibirPaginaComentario(Comentario comentario) {
+	public String exibirComentario(Comentario comentario) {
 		return "comentario/pagina-comentario";
 	}
 
@@ -29,29 +29,24 @@ public class ComentarioController {
 	public String exibirAlterarComentario(Comentario comentario, Integer codigo, Model model) {
 		Comentario cont = this.comentarioService.buscarComentario(codigo);
 		model.addAttribute("comentario", cont);
-		this.comentarios.remove(comentario);
-		this.comentarios.add(comentario);
 		this.comentarioService.removerComentario(codigo);
 		this.comentarioService.inserirComentario(comentario);
 		return "comentario/comentario-alterar";
 	}
 
 	@GetMapping("/exibirFormComentario")
-	public String exibirForm(Comentario comentario) {
+	public String exibirFormComentario(Comentario comentario) {
 		return "comentario/comentario-form";
 	}
 
 	@GetMapping("/excluirComentario")
 	public String excluirComentario(Comentario comentario, Integer codigo) {
-		this.comentarios.remove(comentario);
 		this.comentarioService.removerComentario(codigo);
 		return "comentario/comentario-list";
 	}
 
 	@PostMapping("/salvarComentario")
 	public String salvarComentario(Comentario comentario) {
-		this.comentarios.remove(comentario);
-		this.comentarios.add(comentario);
 		this.comentarioService.inserirComentario(comentario);
 		System.out.println(comentario);
 		return "redirect:/listarComentarios";

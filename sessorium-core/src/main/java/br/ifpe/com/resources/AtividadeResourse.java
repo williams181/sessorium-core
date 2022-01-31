@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import br.ifpe.com.Model.Atividade;
 import br.ifpe.com.Repository.AtividadeRepository;
 import br.ifpe.com.Service.AtividadeService;
 
-//@CrossOrigin(origins = {"http://localhost:19006"})
+@CrossOrigin(origins = {"http://localhost:19006"})
 @RestController
 @RequestMapping(value = "/sessorium")
 public class AtividadeResourse {
@@ -51,9 +52,9 @@ public class AtividadeResourse {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	//@Valid @RequestBody 
 	@RequestMapping(value = "/atividade", method = RequestMethod.POST)
-	public Atividade Post(@Valid @RequestBody Atividade atividade) {
+	public Atividade Post(Atividade atividade) {
 		return atividadeRepository.save(atividade);
 	}
 
